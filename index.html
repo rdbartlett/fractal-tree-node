@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <style>
+      canvas{
+        /*background: #9a9fa5;*/
+        background: #000;
+        width: 100%;
+        height: 100%;
+      }
+      body{
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas">
+    </canvas>
+    <script type="text/javascript">
+      var state = {
+      repeats: 8, depth: 12, offset: 60,
+      skew: 0, opacity: 1, size: 6, color: '#D711B4', angle: -90, pointSize: 2, lineWidth: 1, toggleStroke: true, rotate: false
+      }
+
+      sequence = [
+        {from: 100, to: 50,  rate: 150},
+        {from: 50,  to: 100, rate: 150},
+        // {from: 50,  to: 50,  rate: 20},
+        // {from: 100, to: 100, rate: 20},
+      ]
+
+      var canvas = document.getElementById('canvas');
+      var context = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      var deg_to_rad = Math.PI / 180.0;
+      var rootX = canvas.width / 2;
+      var rootY = canvas.height / 2;
+
+      context.fillStyle = state.color;
+      context.strokeStyle = state.color;
+      context.globalAlpha = state.opacity;
+
+      function drawCanvasFromState(){
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.lineWidth = state.lineWidth;
+        context.beginPath();
+        treeIteration = 0;
+        drawReflectedTrees(rootX, rootY, state.angle, state.depth);
+        context.closePath();
+        context.stroke();
+      }
+
+      function drawReflectedTrees(x1, y1, angle, depth){
+        while (state.repeats - treeIteration !== 0) {
+          drawTree(x1, y1, angle, depth);
+          treeIteration++;
+        }
+      }
+
+      function drawTree(x1, y1, angle, depth){
+        var mirrorAngle = treeIteration/state.repeats * (2 * Math.PI)
+        if (depth !== 0){
+          var x2 = x1 + (Math.cos(angle * deg_to_rad + mirrorAngle) * depth * state.size);
+          var y2 = y1 + (Math.sin(angle * deg_to_rad + mirrorAngle) * depth * state.size);
+          drawLine(x1, y1, x2, y2, depth);
+          drawTree(x2, y2, (angle + state.offset + state.skew), depth - 1);
+          drawTree(x2, y2, (angle - state.offset), depth - 1);
+        }
+      }
+
+      function drawLine(x1, y1, x2, y2){
+        context.moveTo(x1, y1);
+        if(state.toggleStroke){context.lineTo(x2, y2);}
+        else{
+          pointSize = state.pointSize
+          context.fillRect(x2 - pointSize/2, y2 - pointSize/2, pointSize, pointSize)
+        }
+      }
+
+      function animateSequence() {
+
+        nextCut = 0;
+        animate(sequence[nextCut])
+
+        function animate(cut){
+          count = 1
+          next = cut.from
+          hold = false
+
+          if (cut.from > cut.to) growOrShrink = 1
+          else if (cut.from < cut.to) growOrShrink = -1
+          else hold = true;
+
+          if(hold) id = setTimeout(advanceCut, cut.rate)
+          else id = setInterval(tween, cut.rate);
+
+          function tween(){
+            if (next == cut.to){
+              clearInterval(id)
+              count = 1
+              advanceCut();
+            } else {
+              next = cut.from - (count*growOrShrink)
+              state.offset = next;
+              drawCanvasFromState();
+
+              if(state.rotate) state.angle++;
+              count++
+            }
+          }
+
+
+          function advanceCut(){
+            nextCut++
+            if(sequence.length == nextCut) nextCut = 0
+            animate(sequence[nextCut])
+          }
+
+        }
+      }
+
+
+
+    // animateSequence();
+
+    drawCanvasFromState();
+
+
+    </script>
+    <script src='./build.js'></script>
+  </body>
+</html>

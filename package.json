@@ -1,0 +1,28 @@
+{
+  "name": "fractal-tree-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify index.js > build.js",
+    "watch": "watchify  index.js -o build.js -dv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rdbartlett/fractal-tree-node.git"
+  },
+  "author": "rdbartlett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rdbartlett/fractal-tree-node/issues"
+  },
+  "homepage": "https://github.com/rdbartlett/fractal-tree-node#readme",
+  "devDependencies": {
+    "browserify": "^14.5.0"
+  },
+  "dependencies": {
+    "mousetrap": "^1.6.1",
+    "watchify": "^3.9.0"
+  }
+}
