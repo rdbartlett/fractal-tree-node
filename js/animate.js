@@ -23,12 +23,7 @@ attrs.forEach(function(attr){
   if (ranges[attr].period > 0)
     deltas[attr] = (ranges[attr].high - ranges[attr].low)/ (ranges[attr].period / 2)
   else deltas[attr] = 0
-  document.getElementById(attr + 'Low').textContent = ranges[attr].low.toFixed(2);
-  document.getElementById(attr + 'High').textContent = ranges[attr].high.toFixed(2);
-  document.getElementById(attr + 'Period').textContent = ranges[attr].period.toFixed(2);
 });
-
-
 
 
 var sweepTimer
