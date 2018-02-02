@@ -1,20 +1,37 @@
 var stateMgmt = require('./stateMgmt')
 var drawCanvas = require('./drawCanvas')
 
+var recurringTimer
+var oneShotTimer
+
+playing = true
+
 scene1 = {from: 100, to: 50,  rate: 50}
 scene2 = {from:  50, to: 100, rate: 20}
 scene3 = {from: 100, to: 100, rate: 500}
 sequence = [ scene1, scene2, scene3 ]
 
+function playOrPause(){
+  if(playing) {
+    playing = !playing
+    startSequence()
+  }
+  else {
+    playing = !playing
+    clearTimeout(oneShotTimer)
+    clearTimeout(recurringTimer)
+  }
+}
+
 function startSequence() {
-  nextScene = 0;
-  animate(sequence[nextScene])
+  thisScene = 0;
+  animate(sequence[thisScene])
 }
 
 function advanceSequence(){
-  nextScene++
-  if(sequence.length == nextScene) nextScene = 0
-  animate(sequence[nextScene])
+  thisScene++
+  if(sequence.length == thisScene) thisScene = 0
+  animate(sequence[thisScene])
 }
 
 function animate(scene){
@@ -26,12 +43,12 @@ function animate(scene){
   else if (scene.from < scene.to) growOrShrink = -1
   else hold = true;
 
-  if(hold) id = setTimeout(advanceSequence, scene.rate)
-  else id = setInterval(tween, scene.rate);
+  if(hold) oneShotTimer = setTimeout(advanceSequence, scene.rate)
+  else recurringTimer = setInterval(tween, scene.rate);
 
   function tween(){
     if (next == scene.to){
-      clearInterval(id)
+      clearInterval(recurringTimer)
       count = 1
       advanceSequence();
     } else {
@@ -45,4 +62,4 @@ function animate(scene){
   }
 }
 
-module.exports = {startSequence}
+module.exports = {startSequence, playOrPause}

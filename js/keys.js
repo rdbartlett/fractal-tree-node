@@ -1,6 +1,7 @@
 var Mousetrap = require('mousetrap')
 var stateMgmt = require('./stateMgmt')
 var drawCanvas = require('./drawCanvas')
+var animate = require('./animate')
 
 Mousetrap.bind('q', function() { stateMgmt.inc('quirkk', 1); drawCanvas.fromState() });
 Mousetrap.bind('w', function() { stateMgmt.inc('widthh', 1); drawCanvas.fromState() });
@@ -16,6 +17,7 @@ Mousetrap.bind('g', function() { stateMgmt.dec('tensor', 1); drawCanvas.fromStat
 Mousetrap.bind('h', function() { stateMgmt.dec('yessss', 1); drawCanvas.fromState() });
 Mousetrap.bind('o', function() { toggle('orbitt') });
 Mousetrap.bind('p', function() { toggle('points') });
+Mousetrap.bind('space', animate.playOrPause);
 
 function toggle(attr){
   if(state[attr]) stateMgmt.set(attr, false)
