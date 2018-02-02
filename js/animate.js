@@ -1,3 +1,6 @@
+var stateMgmt = require('./stateMgmt')
+var drawCanvas = require('./drawCanvas')
+
 sequence = [
   {from: 100, to: 50,  rate: 150},
   {from: 50,  to: 100, rate: 150},
@@ -47,4 +50,8 @@ function animateSequence() {
   }
 }
 
-module.exports = animateSequence
+function play(){
+  id = setInterval(function(){stateMgmt.inc('repeats', 1); drawCanvas.fromState()}, 300);
+}
+
+module.exports = {animateSequence, play}

@@ -10,3 +10,5 @@ window.addEventListener('resize', function() {
 });
 
 var animate = require('./js/animate')
+
+animate.play();
