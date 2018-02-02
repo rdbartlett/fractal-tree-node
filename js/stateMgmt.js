@@ -10,6 +10,12 @@ function init(){
   return state
 }
 
+bounds = {
+  energy: {min: 0, max: 1},
+  repeat: {min: 1, max: 16},
+  yessss: {min: 1, max: 16}
+}
+
 function get(){
   return state
 }
@@ -20,12 +26,24 @@ function set(attr, to){
 }
 
 function inc(attr, by){
-  state[attr] += by
+  // only increment the attribute if it is not at maximum
+  if(bounds[attr]){
+    if((state[attr] + by) <= bounds[attr].max){
+      state[attr] += by
+    }
+  }
+  else{ state[attr] += by }
   updateReader()
 }
 
 function dec(attr, by){
-  state[attr] -= by
+  // only decrement the attribute if it is not at maximum
+  if(bounds[attr]){
+    if((state[attr] - by) >= bounds[attr].min){
+      state[attr] -= by
+    }
+  }
+  else{ state[attr] -= by }
   updateReader()
 }
 
