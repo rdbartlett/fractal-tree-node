@@ -3,7 +3,8 @@ stateMgmt.init();
 
 var drawCanvas = require('./js/drawCanvas')
 drawCanvas.setRoot();
-drawCanvas.fromState();
+// drawCanvas.fromState();
+
 window.addEventListener('resize', function() {
   drawCanvas.setRoot()
   drawCanvas.fromState();
@@ -11,5 +12,4 @@ window.addEventListener('resize', function() {
 
 var animate = require('./js/animate')
 
-animate.animateSequence();
-// animate.play();
+animate.startSequence();

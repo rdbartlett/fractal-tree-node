@@ -48,10 +48,12 @@ function drawTree(x1, y1, angle, depth){
 
 function drawLine(x1, y1, x2, y2){
   context.moveTo(x1, y1);
-  if(state.toggleStroke){context.lineTo(x2, y2);}
-  else{
+  if(state.points){
     pointSize = state.pointSize
     context.fillRect(x2 - pointSize/2, y2 - pointSize/2, pointSize, pointSize)
+  }
+  else{
+    context.lineTo(x2, y2)
   }
 }
 
