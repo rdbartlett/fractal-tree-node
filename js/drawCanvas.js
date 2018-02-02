@@ -1,4 +1,5 @@
 var stateMgmt = require('./stateMgmt')
+var state
 
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
@@ -15,7 +16,6 @@ function setRoot(){
 
 function fromState(){
   state = stateMgmt.get();
-
   context.fillStyle = state.color;
   context.strokeStyle = state.color;
   context.globalAlpha = state.energy;

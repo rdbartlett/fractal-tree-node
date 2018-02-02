@@ -1,5 +1,6 @@
 var Mousetrap = require('mousetrap')
 var stateMgmt = require('./stateMgmt')
+var state
 var drawCanvas = require('./drawCanvas')
 var animate = require('./animate')
 var presets = require('./presets')
@@ -35,6 +36,7 @@ Mousetrap.bind('p', function() { toggle('points') });
 Mousetrap.bind('space', animate.playOrPause);
 
 function toggle(attr){
+  state = stateMgmt.get()
   if(state[attr]) stateMgmt.set(attr, false)
   else stateMgmt.set(attr, true)
   drawCanvas.fromState()

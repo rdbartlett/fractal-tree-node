@@ -1,4 +1,5 @@
 var stateMgmt = require('./stateMgmt')
+var state
 var drawCanvas = require('./drawCanvas')
 
 // If widthh is sweeping from 20 to 50 degrees and back to 20
@@ -44,6 +45,8 @@ function sweep(){
 }
 
 function nextFrame(){
+  state = stateMgmt.get();
+
   attrs.forEach(function(attr){
     if(growOrShrink[attr]){
       if(state[attr] < ranges[attr].high) stateMgmt.inc(attr, deltas[attr])
