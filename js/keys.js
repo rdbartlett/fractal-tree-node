@@ -18,32 +18,52 @@ Mousetrap.bind('8', function() { presets.load(7); drawCanvas.fromState() });
 Mousetrap.bind('9', function() { presets.load(8); drawCanvas.fromState() });
 Mousetrap.bind('0', function() { presets.load(9); drawCanvas.fromState() });
 
-Mousetrap.bind('q', function() { stateMgmt.inc('quirkk', 1); drawCanvas.fromState() });
-Mousetrap.bind('w', function() { stateMgmt.inc('widthh', 1); drawCanvas.fromState() });
-Mousetrap.bind('e', function() { stateMgmt.inc('energy', 0.05); drawCanvas.fromState() });
-Mousetrap.bind('r', function() { stateMgmt.inc('repeat', 1); drawCanvas.fromState() });
-Mousetrap.bind('t', function() { stateMgmt.inc('tensor', 1); drawCanvas.fromState() });
-Mousetrap.bind('y', function() { stateMgmt.inc('yessss', 1); drawCanvas.fromState() });
+Mousetrap.bind('q', function() { rangesMgmt.inc('quirkk', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('w', function() { rangesMgmt.inc('widthh', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('e', function() { rangesMgmt.inc('energy', 'low', 0.05); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('r', function() { rangesMgmt.inc('repeat', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('t', function() { rangesMgmt.inc('tensor', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('y', function() { rangesMgmt.inc('yessss', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
 
-Mousetrap.bind('a', function() { stateMgmt.dec('quirkk', 1); drawCanvas.fromState() });
-Mousetrap.bind('s', function() { stateMgmt.dec('widthh', 1); drawCanvas.fromState() });
-Mousetrap.bind('d', function() { stateMgmt.dec('energy', 0.05); drawCanvas.fromState() });
-Mousetrap.bind('f', function() { stateMgmt.dec('repeat', 1); drawCanvas.fromState() });
-Mousetrap.bind('g', function() { stateMgmt.dec('tensor', 1); drawCanvas.fromState() });
-Mousetrap.bind('h', function() { stateMgmt.dec('yessss', 1); drawCanvas.fromState() });
+Mousetrap.bind('a', function() { rangesMgmt.dec('quirkk', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('s', function() { rangesMgmt.dec('widthh', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('d', function() { rangesMgmt.dec('energy', 'low', 0.05); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('f', function() { rangesMgmt.dec('repeat', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('g', function() { rangesMgmt.dec('tensor', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('h', function() { rangesMgmt.dec('yessss', 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
 
 Mousetrap.bind('o', function() { toggle('orbitt') });
 Mousetrap.bind('p', function() { toggle('points') });
 
 Mousetrap.bind('space', animate.playOrPause);
 
-Mousetrap.bind('shift+q', function() {
-  ranges = rangesMgmt.get()
-  // console.log(ranges)
-  rangesMgmt.inc('quirkk', 1);
-  console.log(ranges['quirkk'].high)
-  // document.getElementById('quirkk' + 'High').textContent = ranges['quirkk'].high.toFixed(2);
-});
+Mousetrap.bind('shift+q', function() { rangesMgmt.inc('quirkk', 'high', 1) })
+Mousetrap.bind('shift+w', function() { rangesMgmt.inc('widthh', 'high', 1) })
+Mousetrap.bind('shift+e', function() { rangesMgmt.inc('energy', 'high', 0.05) })
+Mousetrap.bind('shift+r', function() { rangesMgmt.inc('repeat', 'high', 1) })
+Mousetrap.bind('shift+t', function() { rangesMgmt.inc('tensor', 'high', 1) })
+Mousetrap.bind('shift+y', function() { rangesMgmt.inc('yessss', 'high', 1) })
+
+Mousetrap.bind('shift+a', function() { rangesMgmt.dec('quirkk', 'high', 1) })
+Mousetrap.bind('shift+s', function() { rangesMgmt.dec('widthh', 'high', 1) })
+Mousetrap.bind('shift+d', function() { rangesMgmt.dec('energy', 'high', 0.05) })
+Mousetrap.bind('shift+f', function() { rangesMgmt.dec('repeat', 'high', 1) })
+Mousetrap.bind('shift+g', function() { rangesMgmt.dec('tensor', 'high', 1) })
+Mousetrap.bind('shift+h', function() { rangesMgmt.dec('yessss', 'high', 1) })
+
+Mousetrap.bind('shift+ctrl+q', function() { rangesMgmt.inc('quirkk', 'period', 1) })
+Mousetrap.bind('shift+ctrl+w', function() { rangesMgmt.inc('widthh', 'period', 1) })
+Mousetrap.bind('shift+ctrl+e', function() { rangesMgmt.inc('energy', 'period', 1) })
+Mousetrap.bind('shift+ctrl+r', function() { rangesMgmt.inc('repeat', 'period', 1) })
+Mousetrap.bind('shift+ctrl+t', function() { rangesMgmt.inc('tensor', 'period', 1) })
+Mousetrap.bind('shift+ctrl+y', function() { rangesMgmt.inc('yessss', 'period', 1) })
+
+Mousetrap.bind('shift+ctrl+a', function() { rangesMgmt.dec('quirkk', 'period', 1) })
+Mousetrap.bind('shift+ctrl+s', function() { rangesMgmt.dec('widthh', 'period', 1) })
+Mousetrap.bind('shift+ctrl+d', function() { rangesMgmt.dec('energy', 'period', 1) })
+Mousetrap.bind('shift+ctrl+f', function() { rangesMgmt.dec('repeat', 'period', 1) })
+Mousetrap.bind('shift+ctrl+g', function() { rangesMgmt.dec('tensor', 'period', 1) })
+Mousetrap.bind('shift+ctrl+h', function() { rangesMgmt.dec('yessss', 'period', 1) })
 
 
 function toggle(attr){

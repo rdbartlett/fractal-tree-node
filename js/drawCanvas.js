@@ -1,6 +1,7 @@
 var stateMgmt = require('./stateMgmt')
 var state
-
+var rangesMgmt = require('./rangesMgmt')
+var ranges = rangesMgmt.get()
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 const deg_to_rad = Math.PI / 180.0;
@@ -26,6 +27,15 @@ function fromState(){
   drawReflectedTrees(rootX, rootY, state.angle, state.yessss);
   context.closePath();
   context.stroke();
+}
+
+function updateStateWithRanges(){
+  stateMgmt.set('quirkk', ranges.quirkk.low)
+  stateMgmt.set('widthh', ranges.widthh.low)
+  stateMgmt.set('energy', ranges.energy.low)
+  stateMgmt.set('repeat', ranges.repeat.low)
+  stateMgmt.set('tensor', ranges.tensor.low)
+  stateMgmt.set('yessss', ranges.yessss.low)
 }
 
 function drawReflectedTrees(x1, y1, angle, depth){
@@ -59,5 +69,5 @@ function drawLine(x1, y1, x2, y2){
 
 
 module.exports = {
-  setRoot, fromState
+  setRoot, fromState, updateStateWithRanges
 }

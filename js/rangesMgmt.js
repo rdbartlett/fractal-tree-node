@@ -2,11 +2,20 @@ var ranges = {}
 
 function init(){
   ranges = {
-    quirkk: {low: 0,  high: 2,   period: 10},
-    widthh: {low:  30,  high: 60,   period: 0}
+    quirkk: {low: 7, high: 7,   period: 90},
+    widthh: {low: 19, high: 19, period: 90},
+    energy: {low: 1, high: 1,   period: 90},
+    repeat: {low: 1, high: 2,   period: 90},
+    tensor: {low: 12, high: 12, period: 90},
+    yessss: {low: 7, high: 7,   period: 90}
   }
+
   updateReader('quirkk')
   updateReader('widthh')
+  updateReader('energy')
+  updateReader('repeat')
+  updateReader('tensor')
+  updateReader('yessss')
   return ranges
 }
 
@@ -14,10 +23,17 @@ function get(){
   return ranges
 }
 
-function inc(attr, by){
+function inc(attr, dir, by){
   // TODO add bounds
 
-  ranges[attr].high += by
+  ranges[attr][dir] += by
+  updateReader(attr)
+}
+
+function dec(attr, dir, by){
+  // TODO add bounds
+
+  ranges[attr][dir] -= by
   updateReader(attr)
 }
 
@@ -28,4 +44,4 @@ function updateReader(attr){
 }
 
 
-module.exports = { init, get, inc }
+module.exports = { init, get, inc, dec }
