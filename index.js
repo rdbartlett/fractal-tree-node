@@ -1,5 +1,5 @@
-var state = require('./js/state')
-state.init();
+var stateMgmt = require('./js/stateMgmt')
+stateMgmt.init();
 
 var drawCanvas = require('./js/drawCanvas')
 drawCanvas.setRoot();

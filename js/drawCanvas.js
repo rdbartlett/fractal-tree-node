@@ -1,9 +1,9 @@
-var stateMgmt = require('./state')
+var stateMgmt = require('./stateMgmt')
 
-stateMgmt.set('repeats', 6);
-stateMgmt.set('depth', 10);
-stateMgmt.dec('depth', 3);
-stateMgmt.inc('depth', 6);
+// stateMgmt.set('repeats', 6);
+// stateMgmt.set('depth', 10);
+// stateMgmt.dec('depth', 3);
+// stateMgmt.inc('depth', 6);
 
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
