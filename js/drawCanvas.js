@@ -1,10 +1,5 @@
 var stateMgmt = require('./stateMgmt')
 
-// stateMgmt.set('repeat', 6);
-// stateMgmt.set('depth', 10);
-// stateMgmt.dec('depth', 3);
-// stateMgmt.inc('depth', 6);
-
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 var deg_to_rad = Math.PI / 180.0;
@@ -17,7 +12,6 @@ function setRoot(){
   rootX = canvas.width / 2;
   rootY = canvas.height / 2;
 }
-
 
 function fromState(){
   state = stateMgmt.get();

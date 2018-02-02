@@ -1,9 +1,8 @@
 var stateMgmt = require('./stateMgmt')
 var drawCanvas = require('./drawCanvas')
 
-scene1 = {from: 100, to: 50,   rate: 150}
-scene2 = {from:  50, to: 100,  rate: 150}
-
+scene1 = {from: 100, to: 50,  rate: 100}
+scene2 = {from:  50, to: 100, rate: 50}
 sequence = [ scene1, scene2 ]
 
 function animateSequence() {
@@ -30,10 +29,10 @@ function animateSequence() {
         advanceScene();
       } else {
         next = scene.from - (count*growOrShrink)
-        state.offset = next;
-        drawCanvasFromState();
+        stateMgmt.set('widthh', next);
+        drawCanvas.fromState();
 
-        if(state.rotate) state.angle++;
+        if(state.rotate) stateMgmt.inc('angle', 1);
         count++
       }
     }

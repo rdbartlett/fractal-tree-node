@@ -2,9 +2,9 @@ var state = {}
 
 function init(){
   state = {
-  quirkk: 0, widthh: 60, energy: 1, repeat: 3, tensor: 3, yessss: 12,
+  quirkk: 0, widthh: 60, energy: 1, repeat: 6, tensor: 10, yessss: 9,
   color: '#D711B4',
-  angle: -90, pointSize: 2, lineWidth: 1, toggleStroke: true, rotate: false
+  angle: -90, pointSize: 2, lineWidth: 1, toggleStroke: false, rotate: true
   }
   return state
 }
