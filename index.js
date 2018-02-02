@@ -9,8 +9,8 @@ window.addEventListener('resize', function() {
   drawCanvas.fromState();
 });
 
+var presets = require('./js/presets')
 var keys = require('./js/keys')
-
 var animate = require('./js/animate')
 
 // animate.startSequence();

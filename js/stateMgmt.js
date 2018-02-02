@@ -2,9 +2,9 @@ var state = {}
 
 function init(){
   state = {
-  quirkk: 10, widthh: 60, energy: 1, repeat: 6, tensor: 10, yessss: 9,
+  quirkk: 7, widthh: 19, energy: 1, repeat: 1, tensor: 12, yessss: 7,
   color: '#D711B4',
-  angle: -90, pointSize: 2, lineWidth: 1, points: true, orbitt: true
+  angle: -90, pointSize: 2, lineWidth: 1, points: false, orbitt: true
   }
   updateReader()
   return state
