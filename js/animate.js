@@ -1,37 +1,35 @@
 var stateMgmt = require('./stateMgmt')
 var drawCanvas = require('./drawCanvas')
 
-sequence = [
-  {from: 100, to: 50,  rate: 150},
-  {from: 50,  to: 100, rate: 150},
-  // {from: 50,  to: 50,  rate: 20},
-  // {from: 100, to: 100, rate: 20},
-]
+scene1 = {from: 100, to: 50,   rate: 150}
+scene2 = {from:  50, to: 100,  rate: 150}
+
+sequence = [ scene1, scene2 ]
 
 function animateSequence() {
 
-  nextCut = 0;
-  animate(sequence[nextCut])
+  nextScene = 0;
+  animate(sequence[nextScene])
 
-  function animate(cut){
+  function animate(scene){
     count = 1
-    next = cut.from
+    next = scene.from
     hold = false
 
-    if (cut.from > cut.to) growOrShrink = 1
-    else if (cut.from < cut.to) growOrShrink = -1
+    if (scene.from > scene.to) growOrShrink = 1
+    else if (scene.from < scene.to) growOrShrink = -1
     else hold = true;
 
-    if(hold) id = setTimeout(advanceCut, cut.rate)
-    else id = setInterval(tween, cut.rate);
+    if(hold) id = setTimeout(advanceScene, scene.rate)
+    else id = setInterval(tween, scene.rate);
 
     function tween(){
-      if (next == cut.to){
+      if (next == scene.to){
         clearInterval(id)
         count = 1
-        advanceCut();
+        advanceScene();
       } else {
-        next = cut.from - (count*growOrShrink)
+        next = scene.from - (count*growOrShrink)
         state.offset = next;
         drawCanvasFromState();
 
@@ -41,17 +39,17 @@ function animateSequence() {
     }
 
 
-    function advanceCut(){
-      nextCut++
-      if(sequence.length == nextCut) nextCut = 0
-      animate(sequence[nextCut])
+    function advanceScene(){
+      nextScene++
+      if(sequence.length == nextScene) nextScene = 0
+      animate(sequence[nextScene])
     }
 
   }
 }
 
 function play(){
-  id = setInterval(function(){stateMgmt.inc('repeats', 1); drawCanvas.fromState()}, 300);
+  id = setInterval(function(){stateMgmt.inc('repeats', 1); drawCanvas.fromState()}, 800);
 }
 
 module.exports = {animateSequence, play}
