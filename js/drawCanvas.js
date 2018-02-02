@@ -7,11 +7,16 @@ stateMgmt.inc('depth', 6);
 
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 var deg_to_rad = Math.PI / 180.0;
-var rootX = canvas.width / 2;
-var rootY = canvas.height / 2;
+var rootX
+var rootY
+
+function setRoot(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  rootX = canvas.width / 2;
+  rootY = canvas.height / 2;
+}
 
 
 function fromState(){
@@ -58,5 +63,5 @@ function drawLine(x1, y1, x2, y2){
 
 
 module.exports = {
-  fromState
+  setRoot, fromState
 }
