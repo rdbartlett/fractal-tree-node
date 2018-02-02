@@ -1,6 +1,9 @@
-var state = require('./state')
+var stateMgmt = require('./state')
 
-var state = state.init();
+stateMgmt.set('repeats', 6);
+stateMgmt.set('depth', 10);
+stateMgmt.dec('depth', 3);
+stateMgmt.inc('depth', 6);
 
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
@@ -10,11 +13,13 @@ var deg_to_rad = Math.PI / 180.0;
 var rootX = canvas.width / 2;
 var rootY = canvas.height / 2;
 
-context.fillStyle = state.color;
-context.strokeStyle = state.color;
-context.globalAlpha = state.opacity;
 
 function fromState(){
+  state = stateMgmt.get();
+
+  context.fillStyle = state.color;
+  context.strokeStyle = state.color;
+  context.globalAlpha = state.opacity;
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.lineWidth = state.lineWidth;
   context.beginPath();
