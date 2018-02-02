@@ -13,8 +13,8 @@ var drawCanvas = require('./drawCanvas')
 
 const frameRate = 33
 var ranges = {
-  quirkk: {low: -40,  high: 40,   period: 120},
-  widthh: {low:  30,  high: 60,   period: 80}
+  quirkk: {low: -40,  high: 40,   period: 200},
+  widthh: {low:  30,  high: 60,   period: 200}
 }
 const attrs = ['quirkk', 'widthh']
 var deltas = []
