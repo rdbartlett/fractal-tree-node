@@ -2,8 +2,8 @@ var state = {}
 
 function init(){
   state = {
-  repeats: 1, depth: 12, offset: 60,
-  skew: 0, opacity: 1, size: 6, color: '#D711B4',
+  quirkk: 0, widthh: 60, energy: 1, repeat: 3, tensor: 3, yessss: 12,
+  color: '#D711B4',
   angle: -90, pointSize: 2, lineWidth: 1, toggleStroke: true, rotate: false
   }
   return state
