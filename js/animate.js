@@ -3,7 +3,7 @@ var drawCanvas = require('./drawCanvas')
 
 scene1 = {from: 100, to: 50,  rate: 50}
 scene2 = {from:  50, to: 100, rate: 20}
-scene3 = {from:  100, to: 100, rate: 500}
+scene3 = {from: 100, to: 100, rate: 500}
 sequence = [ scene1, scene2, scene3 ]
 
 function startSequence() {

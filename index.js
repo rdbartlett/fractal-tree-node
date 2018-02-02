@@ -3,13 +3,14 @@ stateMgmt.init();
 
 var drawCanvas = require('./js/drawCanvas')
 drawCanvas.setRoot();
-// drawCanvas.fromState();
-
+drawCanvas.fromState();
 window.addEventListener('resize', function() {
   drawCanvas.setRoot()
   drawCanvas.fromState();
 });
 
+var keys = require('./js/keys')
+
 var animate = require('./js/animate')
 
-animate.startSequence();
+// animate.startSequence();
