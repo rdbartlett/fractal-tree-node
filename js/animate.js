@@ -20,7 +20,11 @@ const attrs = ['quirkk', 'widthh']
 var deltas = []
 attrs.forEach(function(attr){
   deltas[attr] = (ranges[attr].high - ranges[attr].low)/ (ranges[attr].period / 2)
+  document.getElementById(attr + 'Low').textContent = ranges[attr].low.toFixed(2);
+  document.getElementById(attr + 'High').textContent = ranges[attr].high.toFixed(2);
 });
+
+
 
 
 var sweepTimer

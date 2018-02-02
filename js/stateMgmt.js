@@ -48,14 +48,14 @@ function dec(attr, by){
 }
 
 function updateReader(){
-  document.getElementById('quirkk').textContent = state.quirkk.toFixed(2);
-  document.getElementById('widthh').textContent = state.widthh.toFixed(2);
-  document.getElementById('energy').textContent = state.energy.toFixed(2);
-  document.getElementById('repeat').textContent = state.repeat;
-  document.getElementById('tensor').textContent = state.tensor.toFixed(2);
-  document.getElementById('yessss').textContent = state.yessss;
-  document.getElementById('orbitt').textContent = state.orbitt.toString();
-  document.getElementById('points').textContent = state.points.toString();
+  document.getElementById('quirkkState').textContent = state.quirkk.toFixed(2);
+  document.getElementById('widthhState').textContent = state.widthh.toFixed(2);
+  document.getElementById('energyState').textContent = state.energy.toFixed(2);
+  document.getElementById('repeatState').textContent = state.repeat;
+  document.getElementById('tensorState').textContent = state.tensor.toFixed(2);
+  document.getElementById('yessssState').textContent = state.yessss;
+  document.getElementById('orbittState').textContent = state.orbitt.toString();
+  document.getElementById('pointsState').textContent = state.points.toString();
 }
 
 module.exports = { init, get, set, inc, dec}
