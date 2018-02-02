@@ -1,6 +1,9 @@
 var stateMgmt = require('./js/stateMgmt')
 stateMgmt.init();
 
+var rangesMgmt = require('./js/rangesMgmt')
+rangesMgmt.init();
+
 var drawCanvas = require('./js/drawCanvas')
 drawCanvas.setRoot();
 drawCanvas.fromState();
@@ -14,4 +17,3 @@ var keys = require('./js/keys')
 var animate = require('./js/animate')
 
 animate.sweep();
-// animate.startSequence();

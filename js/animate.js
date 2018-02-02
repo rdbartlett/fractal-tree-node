@@ -1,5 +1,8 @@
 var stateMgmt = require('./stateMgmt')
 var state
+var rangesMgmt = require('./rangesMgmt')
+var ranges = rangesMgmt.get()
+
 var drawCanvas = require('./drawCanvas')
 
 // If widthh is sweeping from 20 to 50 degrees and back to 20
@@ -14,14 +17,12 @@ var drawCanvas = require('./drawCanvas')
 //
 
 const frameRate = 33
-var ranges = {
-  quirkk: {low: -40,  high: 40,   period: 200},
-  widthh: {low:  30,  high: 60,   period: 200}
-}
 const attrs = ['quirkk', 'widthh']
 var deltas = []
 attrs.forEach(function(attr){
-  deltas[attr] = (ranges[attr].high - ranges[attr].low)/ (ranges[attr].period / 2)
+  if (ranges[attr].period > 0)
+    deltas[attr] = (ranges[attr].high - ranges[attr].low)/ (ranges[attr].period / 2)
+  else deltas[attr] = 0
   document.getElementById(attr + 'Low').textContent = ranges[attr].low.toFixed(2);
   document.getElementById(attr + 'High').textContent = ranges[attr].high.toFixed(2);
   document.getElementById(attr + 'Period').textContent = ranges[attr].period.toFixed(2);

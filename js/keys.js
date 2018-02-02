@@ -1,6 +1,8 @@
 var Mousetrap = require('mousetrap')
 var stateMgmt = require('./stateMgmt')
 var state
+var rangesMgmt = require('./rangesMgmt')
+var ranges
 var drawCanvas = require('./drawCanvas')
 var animate = require('./animate')
 var presets = require('./presets')
@@ -34,6 +36,15 @@ Mousetrap.bind('o', function() { toggle('orbitt') });
 Mousetrap.bind('p', function() { toggle('points') });
 
 Mousetrap.bind('space', animate.playOrPause);
+
+Mousetrap.bind('shift+q', function() {
+  ranges = rangesMgmt.get()
+  // console.log(ranges)
+  rangesMgmt.inc('quirkk', 1);
+  console.log(ranges['quirkk'].high)
+  // document.getElementById('quirkk' + 'High').textContent = ranges['quirkk'].high.toFixed(2);
+});
+
 
 function toggle(attr){
   state = stateMgmt.get()

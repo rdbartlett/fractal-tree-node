@@ -3,7 +3,7 @@ var state
 
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
-var deg_to_rad = Math.PI / 180.0;
+const deg_to_rad = Math.PI / 180.0;
 var rootX
 var rootY
 
