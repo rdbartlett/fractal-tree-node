@@ -24,7 +24,7 @@ function fromState(){
   context.lineWidth = state.lineWidth;
   context.beginPath();
   treeIteration = 0;
-  drawReflectedTrees(rootX, rootY, state.angle, state.yessss);
+  drawReflectedTrees(rootX, rootY, state.angle, Number(state.yessss.toFixed(0)))
   context.closePath();
   context.stroke();
 }
@@ -39,7 +39,7 @@ function updateStateWithRanges(){
 }
 
 function drawReflectedTrees(x1, y1, angle, depth){
-  while (state.repeat - treeIteration !== 0) {
+  while (Number(state.repeat.toFixed(0)) - treeIteration !== 0) {
     drawTree(x1, y1, angle, depth);
     treeIteration++;
   }

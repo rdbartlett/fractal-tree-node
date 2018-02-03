@@ -1,22 +1,46 @@
 var ranges = {}
 
+const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss' ]
+
 function init(){
   ranges = {
-    quirkk: {low: 7, high: 7,   period: 90},
+    quirkk: {low: 10, high: 17,   period: 90},
     widthh: {low: 19, high: 19, period: 90},
     energy: {low: 1, high: 1,   period: 90},
-    repeat: {low: 1, high: 2,   period: 90},
-    tensor: {low: 12, high: 12, period: 90},
-    yessss: {low: 7, high: 7,   period: 90}
+    repeat: {low: 1, high: 1,   period: 10},
+    tensor: {low: 6, high: 6, period: 90},
+    yessss: {low: 1, high: 4,   period: 5}
   }
 
-  updateReader('quirkk')
-  updateReader('widthh')
-  updateReader('energy')
-  updateReader('repeat')
-  updateReader('tensor')
-  updateReader('yessss')
+  attrs.forEach(function(attr){
+    updateDeltas(attr)
+    updateReader(attr)
+  })
+
   return ranges
+}
+
+var deltas = []
+
+
+function updateDeltas(attr){
+  if (ranges[attr].period > 0){
+    var d = ranges[attr].high - ranges[attr].low
+    var t = ranges[attr].period / 2
+    deltas[attr] = d/t
+  }
+  else deltas[attr] = 0
+  updateDeltaReader(attr)
+
+  return deltas
+}
+
+function updateDeltaReader(attr){
+  document.getElementById(attr + 'Delta').textContent = deltas[attr]
+}
+
+function getDeltas(){
+  return deltas
 }
 
 function get(){
@@ -27,6 +51,7 @@ function inc(attr, dir, by){
   // TODO add bounds
 
   ranges[attr][dir] += by
+  updateDeltas(attr)
   updateReader(attr)
 }
 
@@ -34,6 +59,7 @@ function dec(attr, dir, by){
   // TODO add bounds
 
   ranges[attr][dir] -= by
+  updateDeltas(attr)
   updateReader(attr)
 }
 
@@ -44,4 +70,4 @@ function updateReader(attr){
 }
 
 
-module.exports = { init, get, inc, dec }
+module.exports = { init, get, inc, dec, getDeltas, attrs }

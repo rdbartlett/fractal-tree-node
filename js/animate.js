@@ -6,13 +6,7 @@ var ranges = rangesMgmt.get()
 var drawCanvas = require('./drawCanvas')
 
 const frameRate = 33
-const attrs = [
-  {name: 'quirkk', precision: 2},
-  {name: 'widthh', precision: 2},
-  {name: 'energy', precision: 2},
-  {name: 'repeat', precision: 0},
-  {name: 'tensor', precision: 2},
-  {name: 'yessss', precision: 0}]
+const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss' ]
 
 // If widthh is sweeping from 20 to 50 degrees and back to 20
 // in a period of 10 frames,
@@ -25,30 +19,30 @@ const attrs = [
 // Quirkk: 10    14    18    18    14    10    14    18    18    14    10
 //
 
-var deltas = []
-deltas = getDeltas()
-function getDeltas(){
-  attrs.forEach(function(attr){
-    if (ranges[attr.name].period > 0){
-      var d = ranges[attr.name].high - ranges[attr.name].low
-      var t = ranges[attr.name].period / 2
-      deltas[attr.name] = Number((d/t).toFixed(attr.precision))
-    }
-    else deltas[attr.name] = 0
-    updateDeltaReader(attr.name)
+// var deltas = []
+// deltas = updateDeltas()
+// function updateDeltas(){
+//   attrs.forEach(function(attr){
+//     if (ranges[attr.name].period > 0){
+//       var d = ranges[attr.name].high - ranges[attr.name].low
+//       var t = ranges[attr.name].period / 2
+//       deltas[attr.name] = Number((d/t).toFixed(attr.precision))
+//     }
+//     else deltas[attr.name] = 0
+//     updateDeltaReader(attr.name)
 
-    console.log(attr.name)
-    console.log(deltas[attr.name])
-  })
-  return deltas
-}
+//     console.log(attr.name)
+//     console.log(deltas[attr.name])
+//   })
+//   return deltas
+// }
 
-function updateDeltaReader(attr){
-  document.getElementById(attr + 'Delta').textContent = deltas[attr]
-}
+// function updateDeltaReader(attr){
+//   document.getElementById(attr + 'Delta').textContent = deltas[attr]
+// }
 
 var sweepTimer
-var growOrShrink = {
+var growing = {
   quirkk: true,
   widthh: true,
   energy: true,
@@ -63,18 +57,21 @@ function sweep(){
 
 function nextFrame(){
   state = stateMgmt.get()
-  deltas = getDeltas()
+  deltas = rangesMgmt.getDeltas()
+
+  console.log("state: %f, delta: %f, growing? ", state.yessss, deltas.yessss, growing.yessss)
 
   attrs.forEach(function(attr){
-    if(growOrShrink[attr.name]){
-      if(state[attr.name] < ranges[attr.name].high) stateMgmt.inc(attr.name, deltas[attr.name])
-      else growOrShrink[attr.name] = !growOrShrink[attr.name]
+    if(growing[attr]){
+      if(state[attr] < ranges[attr].high) stateMgmt.inc(attr, deltas[attr])
+      else growing[attr] = !growing[attr]
     }
     else{
-      if(state[attr.name] > ranges[attr.name].low) stateMgmt.dec(attr.name, deltas[attr.name])
-      else growOrShrink[attr.name] = !growOrShrink[attr.name]
+      if(state[attr] > ranges[attr].low) stateMgmt.dec(attr, deltas[attr])
+      else growing[attr] = !growing[attr]
     }
   });
+
 
   if(state.orbitt) stateMgmt.inc('angle', 1);
 
