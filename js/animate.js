@@ -37,19 +37,16 @@ function nextFrame(){
   state = stateMgmt.get()
   deltas = rangesMgmt.getDeltas()
 
-  // console.log("state: %f, delta: %f, growing? ", state.yessss, deltas.yessss, growing.yessss)
-
   attrs.forEach(function(attr){
     if(growing[attr]){
-      if(state[attr] < ranges[attr].high) stateMgmt.inc(attr, deltas[attr])
+      if(state[attr].toFixed(1) < ranges[attr].high) stateMgmt.inc(attr, deltas[attr])
       else growing[attr] = !growing[attr]
     }
     else{
-      if(state[attr] > ranges[attr].low) stateMgmt.dec(attr, deltas[attr])
+      if(state[attr].toFixed(1) > ranges[attr].low) stateMgmt.dec(attr, deltas[attr])
       else growing[attr] = !growing[attr]
     }
   });
-
 
   if(state.orbitt) stateMgmt.inc('angle', 1);
 
