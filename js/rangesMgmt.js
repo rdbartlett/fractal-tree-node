@@ -4,12 +4,12 @@ const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss' ]
 
 function init(){
   ranges = {
-    quirkk: {low: 10, high: 17,   period: 90},
+    quirkk: {low: 7, high: 7,   period: 90},
     widthh: {low: 19, high: 19, period: 90},
     energy: {low: 1, high: 1,   period: 90},
     repeat: {low: 1, high: 1,   period: 10},
-    tensor: {low: 6, high: 6, period: 90},
-    yessss: {low: 1, high: 4,   period: 5}
+    tensor: {low: 10, high: 10, period: 90},
+    yessss: {low: 8, high: 8,   period: 10}
   }
 
   attrs.forEach(function(attr){
@@ -47,6 +47,10 @@ function get(){
   return ranges
 }
 
+function set(attr, dir, to){
+  ranges[attr][dir] = to
+}
+
 function inc(attr, dir, by){
   // TODO add bounds
 
@@ -70,4 +74,4 @@ function updateReader(attr){
 }
 
 
-module.exports = { init, get, inc, dec, getDeltas, attrs }
+module.exports = { init, get, inc, dec, getDeltas, attrs, set }

@@ -1,4 +1,5 @@
 var stateMgmt = require('./stateMgmt')
+var rangesMgmt = require('./rangesMgmt')
 
 var presets = [
     {repeat: 1,  yessss: 7,  widthh: 19,  tensor: 12, quirkk: 7,   energy: 1}
@@ -15,6 +16,12 @@ var presets = [
 
 function load(index){
   var newState = presets[index]
+  rangesMgmt.set('quirkk', 'low', newState.quirkk)
+  rangesMgmt.set('widthh', 'low', newState.widthh)
+  rangesMgmt.set('energy', 'low', newState.energy)
+  rangesMgmt.set('repeat', 'low', newState.repeat)
+  rangesMgmt.set('tensor', 'low', newState.tensor)
+  rangesMgmt.set('yessss', 'low', newState.yessss)
   stateMgmt.set('quirkk', newState.quirkk)
   stateMgmt.set('widthh', newState.widthh)
   stateMgmt.set('energy', newState.energy)

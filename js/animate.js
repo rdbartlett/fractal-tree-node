@@ -19,28 +19,6 @@ const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss' ]
 // Quirkk: 10    14    18    18    14    10    14    18    18    14    10
 //
 
-// var deltas = []
-// deltas = updateDeltas()
-// function updateDeltas(){
-//   attrs.forEach(function(attr){
-//     if (ranges[attr.name].period > 0){
-//       var d = ranges[attr.name].high - ranges[attr.name].low
-//       var t = ranges[attr.name].period / 2
-//       deltas[attr.name] = Number((d/t).toFixed(attr.precision))
-//     }
-//     else deltas[attr.name] = 0
-//     updateDeltaReader(attr.name)
-
-//     console.log(attr.name)
-//     console.log(deltas[attr.name])
-//   })
-//   return deltas
-// }
-
-// function updateDeltaReader(attr){
-//   document.getElementById(attr + 'Delta').textContent = deltas[attr]
-// }
-
 var sweepTimer
 var growing = {
   quirkk: true,
@@ -59,7 +37,7 @@ function nextFrame(){
   state = stateMgmt.get()
   deltas = rangesMgmt.getDeltas()
 
-  console.log("state: %f, delta: %f, growing? ", state.yessss, deltas.yessss, growing.yessss)
+  // console.log("state: %f, delta: %f, growing? ", state.yessss, deltas.yessss, growing.yessss)
 
   attrs.forEach(function(attr){
     if(growing[attr]){
