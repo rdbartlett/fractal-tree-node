@@ -5,6 +5,7 @@ var rangesMgmt = require('./js/rangesMgmt')
 rangesMgmt.init();
 
 var ui = require('./js/ui')
+ui.init()
 
 var drawCanvas = require('./js/drawCanvas')
 drawCanvas.setRoot();

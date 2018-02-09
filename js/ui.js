@@ -1,3 +1,34 @@
+var reader = document.getElementById('readerQuirkk');
+var ctx = reader.getContext('2d');
+
+function init(){
+  drawMidline()
+  drawArc()
+}
+
+function drawMidline(){
+  var x1 = 0
+  var y1 = reader.height / 2
+  ctx.strokeStyle = '#000'
+  ctx.lineWidth = 1
+  ctx.beginPath()
+  ctx.moveTo(x1, y1)
+  ctx.lineTo(reader.width, y1)
+  ctx.closePath()
+  ctx.stroke()
+}
+
+function drawArc(){
+  ctx.strokeStyle = '#fff'
+  ctx.lineWidth = 2
+  ctx.beginPath()
+  ctx.moveTo(0, reader.height)
+  ctx.lineTo(reader.width / 2, 0)
+  ctx.lineTo(reader.width, reader.height)
+  // ctx.closePath()
+  ctx.stroke()
+}
+
 function updateState(state){
   document.getElementById('quirkkState').textContent = state.quirkk.toFixed(2);
   document.getElementById('widthhState').textContent = state.widthh.toFixed(2);
@@ -20,5 +51,5 @@ function updateDelta(attr, val){
 }
 
 module.exports = {
-  updateState, updateDelta, updateRange
+  init, updateState, updateDelta, updateRange
 }

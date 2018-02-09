@@ -7,7 +7,7 @@ visualise ranges
 <html>
   <head>
     <style>
-      canvas{
+      #canvas{
         /*background: #9a9fa5;*/
         background: #000;
         background: rgb(154, 159, 165);
@@ -17,30 +17,91 @@ visualise ranges
       body{
         margin: 0;
         padding: 0;
+        color: white;
+        font-family: monospace;
+        font-size: 10pt;
       }
       #stateReader{
         position: absolute;
         top: 0;
-        color: white;
-        font-family: monospace;
+        visibility: hidden;
       }
       #stateReader ul{
         list-style: none;
         margin: 0;
         padding: 0;
       }
+      #stateReader li{
+        height: 30px;
+      }
+
+      .readerWrap{
+        position: absolute;
+        top: 0;
+      }
+      .reader{
+        position: relative;
+      }
+      .readerLeft{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 30px;
+      }
+      .attrLabel{
+        position: absolute;
+        top: 7px;
+        left: 5px;
+      }
+      .max{
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .min{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      .readerGraph{
+        position: absolute;
+        top: 0;
+        left: 100px;
+        width: 200px;
+        height: 30px;
+        background: rgba(0,0,0,0.5);
+      }
+      .readerRight{
+        position: absolute;
+        top: 7px;
+        width: 50px;
+        left: 300px;
+        height: 30px;
+
+      }
     </style>
   </head>
   <body>
     <canvas id="canvas">
     </canvas>
+    <div class="readerWrap">
+      <div class="reader" id="quirkk">
+        <div class="readerLeft">
+          <div class="attrLabel">quirkk</div>
+          <div class="max" id="quirkkHigh">0</div>
+          <div class="min" id="quirkkLow">0</div>
+        </div>
+        <canvas class="readerGraph" id="readerQuirkk"></canvas>
+        <div class="readerRight" id="quirkkPeriod">0
+        </div>
+      </div>
+    </div>
     <div id="stateReader">
       <ul>
-        <li>quirkk
+        <li>
+          quirkk
           <span id="quirkkState">0</span>
-          [<span id="quirkkLow">0</span>
-          <span id="quirkkHigh">0</span>]
-          <span id="quirkkPeriod">0</span>
           <span id="quirkkDelta">0</span>
         </li>
         <li>widthh
