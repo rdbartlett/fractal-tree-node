@@ -4,6 +4,8 @@ stateMgmt.init();
 var rangesMgmt = require('./js/rangesMgmt')
 rangesMgmt.init();
 
+var ui = require('./js/ui')
+
 var drawCanvas = require('./js/drawCanvas')
 drawCanvas.setRoot();
 drawCanvas.fromState();

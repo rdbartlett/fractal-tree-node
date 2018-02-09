@@ -1,3 +1,5 @@
+var ui = require('./ui')
+
 var ranges = {}
 
 const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss' ]
@@ -14,7 +16,7 @@ function init(){
 
   attrs.forEach(function(attr){
     updateDeltas(attr)
-    updateReader(attr)
+    ui.updateRange(attr, ranges[attr])
   })
 
   return ranges
@@ -30,13 +32,9 @@ function updateDeltas(attr){
     deltas[attr] = d/t
   }
   else deltas[attr] = 0
-  updateDeltaReader(attr)
+  ui.updateDelta(attr, deltas[attr])
 
   return deltas
-}
-
-function updateDeltaReader(attr){
-  document.getElementById(attr + 'Delta').textContent = deltas[attr]
 }
 
 function getDeltas(){
@@ -56,7 +54,7 @@ function inc(attr, dir, by){
 
   ranges[attr][dir] += by
   updateDeltas(attr)
-  updateReader(attr)
+  ui.updateRange(attr, ranges[attr])
 }
 
 function dec(attr, dir, by){
@@ -64,14 +62,7 @@ function dec(attr, dir, by){
 
   ranges[attr][dir] -= by
   updateDeltas(attr)
-  updateReader(attr)
+  ui.updateRange(attr, ranges[attr])
 }
-
-function updateReader(attr){
-  document.getElementById(attr + 'Low').textContent = ranges[attr].low.toFixed(2);
-  document.getElementById(attr + 'High').textContent = ranges[attr].high.toFixed(2);
-  document.getElementById(attr + 'Period').textContent = ranges[attr].period.toFixed(2);
-}
-
 
 module.exports = { init, get, inc, dec, getDeltas, attrs, set }

@@ -1,3 +1,5 @@
+var ui = require('./ui')
+
 var state = {}
 
 function init(){
@@ -5,7 +7,7 @@ function init(){
     quirkk: 7, widthh: 19, energy: 1, repeat: 1, tensor: 10, yessss: 8,
     color: '#D711B4', angle: -90, pointSize: 2, lineWidth: 1, points: false, orbitt: false
   }
-  updateReader()
+  ui.updateState(state)
   return state
 }
 
@@ -21,7 +23,7 @@ function get(){
 
 function set(attr, to){
   state[attr] = to
-  updateReader()
+  ui.updateState(state)
 }
 
 function inc(attr, by){
@@ -32,7 +34,7 @@ function inc(attr, by){
     }
   }
   else{ state[attr] += by }
-  updateReader()
+  ui.updateState(state)
 }
 
 function dec(attr, by){
@@ -43,18 +45,8 @@ function dec(attr, by){
     }
   }
   else{ state[attr] -= by }
-  updateReader()
+  ui.updateState(state)
 }
 
-function updateReader(){
-  document.getElementById('quirkkState').textContent = state.quirkk.toFixed(2);
-  document.getElementById('widthhState').textContent = state.widthh.toFixed(2);
-  document.getElementById('energyState').textContent = state.energy.toFixed(2);
-  document.getElementById('repeatState').textContent = state.repeat.toFixed(0);
-  document.getElementById('tensorState').textContent = state.tensor.toFixed(2);
-  document.getElementById('yessssState').textContent = state.yessss.toFixed(0);
-  document.getElementById('orbittState').textContent = state.orbitt.toString();
-  document.getElementById('pointsState').textContent = state.points.toString();
-}
 
 module.exports = { init, get, set, inc, dec}
