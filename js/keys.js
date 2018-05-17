@@ -19,6 +19,9 @@ Mousetrap.bind('8', function() { presets.load(7); drawCanvas.fromState() });
 Mousetrap.bind('9', function() { presets.load(8); drawCanvas.fromState() });
 Mousetrap.bind('0', function() { presets.load(9); drawCanvas.fromState() });
 
+Mousetrap.bind('i', function() { stateMgmt.inc('speedd', 1); animate.resetSweep() })
+Mousetrap.bind('k', function() { stateMgmt.dec('speedd', 1); animate.resetSweep() })
+
 Mousetrap.bind('q', function() { rangesMgmt.inc(attrs[0], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
 Mousetrap.bind('w', function() { rangesMgmt.inc(attrs[1], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
 Mousetrap.bind('e', function() { rangesMgmt.inc(attrs[2], 'low', 0.05); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
