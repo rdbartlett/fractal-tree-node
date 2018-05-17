@@ -8,6 +8,7 @@ function updateState(state){
   document.getElementById('orbittState').textContent = state.orbitt.toString();
   document.getElementById('pointsState').textContent = state.points.toString();
   document.getElementById('speeddState').textContent = state.speedd.toString();
+  document.getElementById('modeState').textContent = state.mode.toString();
 }
 
 function updateRange(attr, vals){

@@ -6,7 +6,8 @@ function init(){
   state = {
     quirkk: 7, widthh: 19, energy: 1, repeat: 1, tensor: 10, yessss: 8,
     color: '#D711B4', angle: -90, pointSize: 2, lineWidth: 1, points: false, orbitt: false,
-    speedd: 1
+    speedd: 1,
+    mode: 'quirkk'
   }
   ui.updateState(state)
   return state

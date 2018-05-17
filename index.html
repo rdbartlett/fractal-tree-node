@@ -1,12 +1,15 @@
 <!-- TODO
 
-- add overall tempo
+
 - check range validations
+- visualise ranges
 - switch controls to:
-  - center, swing amplitude, tempo
-  - e.g. select attr with q, w, e, r, t, y
-  - control amplitude with a & z
-  - tempo with s & x
+  - add mode
+  - select attr with q, w, e, r, t, y
+  - move centre with ⬆⬇, amplitude with ⬅➡, and tempo with shift ⬆⬇
+  - move speed with a/z
+
+- shift energy onto a 100 unit scale
 
 attr    Center    Swing   Tempo
 Quirkk
@@ -15,8 +18,11 @@ Energy
 Repeat
 Tensor
 Yessss
+Urgncy
 
-
+- add color picker
+- add different easing curves
+rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/ rdb@richdecibels.com:~/websites/richdecibels.com/fractal-tree/
  -->
 
 <html>
@@ -97,6 +103,7 @@ Yessss
         <li>orbitt <span id="orbittState">0</span></li>
         <li>points <span id="pointsState">0</span></li>
         <li>speedd <span id="speeddState">0</span></li>
+        <li>mode <span id="modeState">0</span></li>
       </ul>
     </div>
     <script src='./build.js'></script>
