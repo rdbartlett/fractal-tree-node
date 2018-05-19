@@ -19,18 +19,32 @@ Mousetrap.bind('8', function() { presets.load(7); drawCanvas.fromState() });
 Mousetrap.bind('9', function() { presets.load(8); drawCanvas.fromState() });
 Mousetrap.bind('0', function() { presets.load(9); drawCanvas.fromState() });
 
-Mousetrap.bind('i', function() { stateMgmt.inc('speedd', 1); animate.resetSweep() })
-Mousetrap.bind('k', function() { stateMgmt.dec('speedd', 1); animate.resetSweep() })
-
 Mousetrap.bind('q', function() { stateMgmt.set('mode', 'quirkk') })
 Mousetrap.bind('w', function() { stateMgmt.set('mode', 'widthh') })
 Mousetrap.bind('e', function() { stateMgmt.set('mode', 'energy') })
 Mousetrap.bind('r', function() { stateMgmt.set('mode', 'repeat') })
 Mousetrap.bind('t', function() { stateMgmt.set('mode', 'tensor') })
 Mousetrap.bind('y', function() { stateMgmt.set('mode', 'yessss') })
+Mousetrap.bind('u', function() { stateMgmt.set('mode', 'urgncy') })
 
-Mousetrap.bind('up',    function() { rangesMgmt.inc(state.mode, 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-Mousetrap.bind('down',  function() { rangesMgmt.dec(state.mode, 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('i', function() { stateMgmt.inc('urgncy', 1); animate.resetSweep() })
+Mousetrap.bind('k', function() { stateMgmt.dec('urgncy', 1); animate.resetSweep() })
+
+Mousetrap.bind('up',  function() {
+  if (state.mode == 'urgncy') {
+    stateMgmt.inc('urgncy', 1)
+    animate.resetSweep()
+  } else {
+    rangesMgmt.inc(state.mode, 'center', 1)
+    drawCanvas.updateStateWithRanges()
+    drawCanvas.fromState()
+  }
+})
+
+Mousetrap.bind('down',  function() {
+  if (state.mode == 'urgncy') { stateMgmt.dec('urgncy', 1); animate.resetSweep() }
+  else {rangesMgmt.dec(state.mode, 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() }
+})
 Mousetrap.bind('right', function() { rangesMgmt.inc(state.mode, 'amplitude', 1); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
 Mousetrap.bind('left',  function() { rangesMgmt.dec(state.mode, 'amplitude', 1); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
 

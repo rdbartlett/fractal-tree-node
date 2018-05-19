@@ -6,7 +6,7 @@ function init(){
   state = {
     quirkk: 0, widthh: 30, energy: 100, repeat: 1, tensor: 10, yessss: 8,
     color: '#D711B4', angle: -90, pointSize: 2, lineWidth: 1,
-    points: false, orbitt: false, speedd: 2,
+    points: false, orbitt: false, urgncy: 2,
     mode: 'quirkk'
   }
   ui.updateState(state)
@@ -18,7 +18,7 @@ var bounds = {
   repeat: {min: 0, max: 300},
   tensor: {min: 0, max: 999},
   yessss: {min: 0, max: 16},
-  speedd: {min: 0, max: 100}
+  urgncy: {min: 1, max: 100}
 }
 
 function get(){

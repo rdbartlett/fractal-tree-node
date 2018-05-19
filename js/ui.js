@@ -7,8 +7,12 @@ function updateState(state){
   document.getElementById('yessssState').textContent = state.yessss.toFixed(0);
   document.getElementById('orbittState').textContent = state.orbitt.toString();
   document.getElementById('pointsState').textContent = state.points.toString();
-  document.getElementById('speeddState').textContent = state.speedd.toString();
+  document.getElementById('urgncyState').textContent = state.urgncy.toString();
   document.getElementById('modeState').textContent = state.mode.toString();
+
+  const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss', 'urgncy' ]
+  attrs.forEach(function(attr){ document.getElementById(attr + 'UI').className = "" })
+  document.getElementById(state.mode + 'UI').className = "selected"
 }
 
 function updateRange(attr, vals){

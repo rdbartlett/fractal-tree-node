@@ -53,7 +53,7 @@ var bounds = {
   repeat: {min: 0, max: 300},
   tensor: {min: 0, max: 999},
   yessss: {min: 0, max: 16},
-  speedd: {min: 0, max: 100}
+  urgncy: {min: 1, max: 100}
 }
 
 function inc(attr, key, by){
