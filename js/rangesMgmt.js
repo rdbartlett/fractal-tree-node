@@ -49,18 +49,35 @@ function set(attr, key, to){
   ranges[attr][key] = to
 }
 
-function inc(attr, key, by){
-  // TODO add bounds
 
-  ranges[attr][key] += by
+var bounds = {
+  energy: {min: 0, max: 100},
+  repeat: {min: 0, max: 300},
+  tensor: {min: 0, max: 999},
+  yessss: {min: 0, max: 16},
+  speedd: {min: 0, max: 100}
+}
+
+function inc(attr, key, by){
+  // only increment the attribute if it is not at maximum
+  if(bounds[attr]){
+    if((ranges[attr][key] + by) <= bounds[attr].max){
+      ranges[attr][key] += by
+    }
+  }
+  else{ ranges[attr][key] += by }
   updateDeltas(attr)
   ui.updateRange(attr, ranges[attr])
 }
 
 function dec(attr, key, by){
-  // TODO add bounds
-
-  ranges[attr][key] -= by
+  // only decrement the attribute if it is not at minimum
+  if(bounds[attr]){
+    if((ranges[attr][key] - by) >= bounds[attr].min){
+      ranges[attr][key] -= by
+    }
+  }
+  else{ ranges[attr][key] -= by }
   updateDeltas(attr)
   ui.updateRange(attr, ranges[attr])
 }

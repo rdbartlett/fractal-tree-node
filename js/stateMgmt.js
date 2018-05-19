@@ -13,10 +13,12 @@ function init(){
   return state
 }
 
-bounds = {
-  energy: {whole: false, min: 0, max: 100},
-  repeat: {whole: true, min: 1, max: 16},
-  yessss: {whole: true, min: 1, max: 16}
+var bounds = {
+  energy: {min: 0, max: 100},
+  repeat: {min: 0, max: 300},
+  tensor: {min: 0, max: 999},
+  yessss: {min: 0, max: 16},
+  speedd: {min: 0, max: 100}
 }
 
 function get(){
