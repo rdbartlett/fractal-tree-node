@@ -31,7 +31,7 @@ Mousetrap.bind('t', function() { stateMgmt.set('modeIndex', 4); ui.updateModeSel
 Mousetrap.bind('y', function() { stateMgmt.set('modeIndex', 5); ui.updateModeSelection(state) })
 Mousetrap.bind('u', function() { stateMgmt.set('modeIndex', 6); ui.updateModeSelection(state) })
 
-Mousetrap.bind('a',  function() {
+function inc(){
   if (stateMgmt.mode() == 'urgncy') {
     stateMgmt.inc('urgncy', 1)
     animate.resetSweep()
@@ -40,12 +40,17 @@ Mousetrap.bind('a',  function() {
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
   }
-})
+}
 
-Mousetrap.bind('z',  function() {
+function dec(){
   if (stateMgmt.mode() == 'urgncy') { stateMgmt.dec('urgncy', 1); animate.resetSweep() }
   else {rangesMgmt.dec(stateMgmt.mode(), 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() }
-})
+}
+
+Mousetrap.bind('a',  inc)
+Mousetrap.bind('z',  dec)
+Mousetrap.bind('right',  inc)
+Mousetrap.bind('left',  dec)
 
 Mousetrap.bind('s', function() {
   if (stateMgmt.mode() != 'urgncy'){
