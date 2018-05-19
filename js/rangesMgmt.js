@@ -30,7 +30,6 @@ function updateDeltas(attr){
     deltas[attr] = ranges[attr].amplitude * ranges[attr].freq / 100
   }
   else deltas[attr] = 0
-  ui.updateDelta(attr, deltas[attr])
 
   return deltas
 }

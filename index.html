@@ -1,7 +1,7 @@
 <!-- TODO
 
-- replace period with tempo
-- visualise ranges
+- change controls to: up/down for mode select; a/z, s/x, d/c for state, swing, freq
+- update state when loading presets
 - explain controls
 - toggle HUD
 - DRY up bounds
@@ -30,16 +30,27 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
         top: 0;
         font-family: monospace;
       }
+      #stateReader table{
+        border-spacing: 0
+      }
       #stateReader tr{
         color: white;
       }
+      #head td, #pointsUI td{
+        border-bottom: 1px solid white;
+      }
       #stateReader td{
-        border: 0;
-        padding: 0;
-        margin: 0;
+        padding: 1px 3px;
       }
       #stateReader .selected{
         background: rgba(255,255,255,0.4);
+      }
+      .keys{
+        visibility: hidden;
+        color: rgba(0, 0, 0, 0.8);
+      }
+      .selected .keys{
+        visibility: visible
       }
     </style>
   </head>
@@ -48,62 +59,79 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
     </canvas>
     <div id="stateReader">
       <table>
-        <tr></tr>
+        <tr id="head">
+          <td colspan=2></td>
+          <td colspan=2>state </td>
+          <td colspan=2>swing</td>
+          <td colspan=2>freq</td>
+        </tr>
         <tr id="quirkkUI" class="selected">
-          <td>quirkk</td>
+          <td>Q quirkk</td>
+          <td><span class="keys">⬆⬇</span></td>
           <td><span id="quirkkState">0</span></td>
-          <td>[<span id="quirkkCenter">0</span> ±</td>
-          <td><span id="quirkkAmplitude">0</span>]</td>
+          <td><span class="keys">⬅➡</span></td>
+          <td><span id="quirkkAmplitude">0</span></td>
+          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="quirkkPeriod">0</span></td>
-          <td><span id="quirkkDelta">0</span></td>
         </tr>
         <tr id="widthhUI">
-          <td>widthh</td>
+          <td>W widthh</td>
+          <td><span class="keys">⬆⬇</span></td>
           <td><span id="widthhState">0</span></td>
-          <td>[<span id="widthhCenter">0</span> ±</td>
-          <td><span id="widthhAmplitude">0</span>]</td>
+          <td><span class="keys">⬅➡</span></td>
+          <td><span id="widthhAmplitude">0</span></td>
+          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="widthhPeriod">0</span></td>
-          <td><span id="widthhDelta">0</span></td>
         </tr>
         <tr id="energyUI">
-          <td>energy</td>
+          <td>E energy</td>
+          <td><span class="keys">⬆⬇</span></td>
           <td><span id="energyState">0</span></td>
-          <td>[<span id="energyCenter">0</span> ±</td>
-          <td><span id="energyAmplitude">0</span>]</td>
+          <td><span class="keys">⬅➡</span></td>
+          <td><span id="energyAmplitude">0</span></td>
+          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="energyPeriod">0</span></td>
-          <td><span id="energyDelta">0</span></td>
         </tr>
         <tr id="repeatUI">
-          <td>repeat</td>
+          <td>R repeat</td>
+          <td><span class="keys">⬆⬇</span></td>
           <td><span id="repeatState">0</span></td>
-          <td>[<span id="repeatCenter">0</span> ±</td>
-          <td><span id="repeatAmplitude">0</span>]</td>
+          <td><span class="keys">⬅➡</span></td>
+          <td><span id="repeatAmplitude">0</span></td>
+          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="repeatPeriod">0</span></td>
-          <td><span id="repeatDelta">0</span></td>
         </tr>
         <tr id="tensorUI">
-          <td>tensor</td>
+          <td>T tensor</td>
+          <td><span class="keys">⬆⬇</span></td>
           <td><span id="tensorState">0</span></td>
-          <td>[<span id="tensorCenter">0</span> ±</td>
-          <td><span id="tensorAmplitude">0</span>]</td>
+          <td><span class="keys">⬅➡</span></td>
+          <td><span id="tensorAmplitude">0</span></td>
+          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="tensorPeriod">0</span></td>
-          <td><span id="tensorDelta">0</span></td>
         </tr>
         <tr id="yessssUI">
-          <td>yessss</td>
+          <td>Y yessss</td>
+          <td><span class="keys">⬆⬇</span></td>
           <td><span id="yessssState">0</span></td>
-          <td>[<span id="yessssCenter">0</span> ±</td>
-          <td><span id="yessssAmplitude">0</span>]</td>
+          <td><span class="keys">⬅➡</span></td>
+          <td><span id="yessssAmplitude">0</span></td>
+          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="yessssPeriod">0</span></td>
-          <td><span id="yessssDelta">0</span></td>
         </tr>
         <tr id="urgncyUI">
-          <td>urgncy</td>
-          <td><span id="urgncyState">0</span></td>
+          <td>U urgncy</td>
+          <td><span class="keys">⬆⬇</span></td>
+          <td colspan=5><span id="urgncyState">0</span></td>
         </tr>
-        <tr><td>orbitt</td><td><span id="orbittState">0</span></td></tr>
-        <tr><td>points</td><td><span id="pointsState">0</span></td></tr>
-        <tr><td>mode</td><td><span id="modeState">0</span></td></tr>
+        <tr>
+          <td colspan=2>O orbitt</td>
+          <td colspan=5><span id="orbittState">0</span><span class="keys">⬆⬇</span></td>
+        </tr>
+        <tr id="pointsUI">
+          <td colspan=2>P points</td>
+          <td colspan=5><span id="pointsState">0</span><span class="keys">⬆⬇</span></td>
+        </tr>
       </table>
     </div>
     <script src='./build.js'></script>

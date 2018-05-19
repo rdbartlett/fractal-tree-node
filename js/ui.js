@@ -8,7 +8,6 @@ function updateState(state){
   document.getElementById('orbittState').textContent = state.orbitt.toString();
   document.getElementById('pointsState').textContent = state.points.toString();
   document.getElementById('urgncyState').textContent = state.urgncy.toString();
-  document.getElementById('modeState').textContent = state.mode.toString();
 }
 
 function updateModeSelection(state){
@@ -18,15 +17,10 @@ function updateModeSelection(state){
 }
 
 function updateRange(attr, vals){
-  document.getElementById(attr + 'Center').textContent = vals.center.toFixed(2);
   document.getElementById(attr + 'Amplitude').textContent = vals.amplitude.toFixed(2);
   document.getElementById(attr + 'Period').textContent = vals.freq.toFixed(2);
 }
 
-function updateDelta(attr, val){
-  document.getElementById(attr + 'Delta').textContent = val.toFixed(3)
-}
-
 module.exports = {
-  updateState, updateDelta, updateRange, updateModeSelection
+  updateState, updateRange, updateModeSelection
 }
