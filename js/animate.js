@@ -45,38 +45,23 @@ var bounds = {
   speedd: {min: 0, max: 100}
 }
 
-function growUnlessExceedingBounds(attr){
-  if(state[attr] + 1 <= bounds[attr].max) grow(attr)
-}
 
-function shrinkUnlessExceedingBounds(attr){
-  if(state[attr] - 1 >= bounds[attr].min) shrink(attr)
-}
-
-function grow(attr){
-  stateMgmt.inc(attr, deltas[attr])
-}
-
-function shrink(attr){
-  stateMgmt.dec(attr, deltas[attr])
-}
+function LTMax(attr){ return (state[attr] + 1 <= bounds[attr].max) }
+function GTMin(attr){ return (state[attr] - 1 >= bounds[attr].min) }
+function LTTop(attr){ return (state[attr] < ranges[attr].center + ranges[attr].amplitude) }
+function GTBot(attr){ return (state[attr] > ranges[attr].center - ranges[attr].amplitude) }
+function grow(attr){   stateMgmt.inc(attr, deltas[attr]) }
+function shrink(attr){ stateMgmt.dec(attr, deltas[attr]) }
 
 function shouldGrow(attr){
-  if(bounds[attr]){
-    return (state[attr] < ranges[attr].center + ranges[attr].amplitude) &&
-           (state[attr] + 1 <= bounds[attr].max)
-  }
-  else return (state[attr] < ranges[attr].center + ranges[attr].amplitude)
+  if(bounds[attr]) return LTTop(attr) && LTMax(attr)
+  else return LTTop(attr)
 }
 
 function shouldShrink(attr){
-  if(bounds[attr]){
-    return (state[attr] > ranges[attr].center - ranges[attr].amplitude) &&
-           (state[attr] - 1 >= bounds[attr].min)
-  }
-  else return (state[attr] > ranges[attr].center - ranges[attr].amplitude)
+  if(bounds[attr]) return GTBot(attr) && GTMin(attr)
+  else return GTBot(attr)
 }
-
 
 function nextFrame(){
   state = stateMgmt.get()
@@ -85,13 +70,13 @@ function nextFrame(){
   attrs.forEach(function(attr){
     if(growing[attr]){
       if(shouldGrow(attr)){
-        if(bounds[attr]) growUnlessExceedingBounds(attr)
+        if(bounds[attr] && LTMax(attr)) grow(attr)
         else grow(attr)
       } else growing[attr] = !growing[attr]
     }
     else{
       if(shouldShrink(attr)){
-        if(bounds[attr]) shrinkUnlessExceedingBounds(attr)
+        if(bounds[attr] && GTMin(attr)) shrink(attr)
         else shrink(attr)
       } else growing[attr] = !growing[attr]
     }
