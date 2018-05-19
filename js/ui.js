@@ -13,7 +13,7 @@ function updateState(state){
 function updateModeSelection(state){
   const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss', 'urgncy' ]
   attrs.forEach(function(attr){ document.getElementById(attr + 'UI').className = "" })
-  document.getElementById(state.mode + 'UI').className = "selected"
+  document.getElementById(state.modes[state.modeIndex] + 'UI').className = "selected"
 }
 
 function updateRange(attr, vals){

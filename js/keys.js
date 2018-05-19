@@ -20,52 +20,55 @@ Mousetrap.bind('8', function() { presets.load(7); drawCanvas.fromState() });
 Mousetrap.bind('9', function() { presets.load(8); drawCanvas.fromState() });
 Mousetrap.bind('0', function() { presets.load(9); drawCanvas.fromState() });
 
-Mousetrap.bind('q', function() { stateMgmt.set('mode', 'quirkk'); ui.updateModeSelection(state) })
-Mousetrap.bind('w', function() { stateMgmt.set('mode', 'widthh'); ui.updateModeSelection(state) })
-Mousetrap.bind('e', function() { stateMgmt.set('mode', 'energy'); ui.updateModeSelection(state) })
-Mousetrap.bind('r', function() { stateMgmt.set('mode', 'repeat'); ui.updateModeSelection(state) })
-Mousetrap.bind('t', function() { stateMgmt.set('mode', 'tensor'); ui.updateModeSelection(state) })
-Mousetrap.bind('y', function() { stateMgmt.set('mode', 'yessss'); ui.updateModeSelection(state) })
-Mousetrap.bind('u', function() { stateMgmt.set('mode', 'urgncy'); ui.updateModeSelection(state) })
+Mousetrap.bind('up',  function() { if(state.modeIndex > 0) stateMgmt.set('modeIndex', state.modeIndex-1) })
+Mousetrap.bind('down',  function() { if(state.modeIndex < 6) stateMgmt.set('modeIndex', state.modeIndex+1) })
 
-Mousetrap.bind('up',  function() {
-  if (state.mode == 'urgncy') {
+Mousetrap.bind('q', function() { stateMgmt.set('modeIndex', 0); ui.updateModeSelection(state) })
+Mousetrap.bind('w', function() { stateMgmt.set('modeIndex', 1); ui.updateModeSelection(state) })
+Mousetrap.bind('e', function() { stateMgmt.set('modeIndex', 2); ui.updateModeSelection(state) })
+Mousetrap.bind('r', function() { stateMgmt.set('modeIndex', 3); ui.updateModeSelection(state) })
+Mousetrap.bind('t', function() { stateMgmt.set('modeIndex', 4); ui.updateModeSelection(state) })
+Mousetrap.bind('y', function() { stateMgmt.set('modeIndex', 5); ui.updateModeSelection(state) })
+Mousetrap.bind('u', function() { stateMgmt.set('modeIndex', 6); ui.updateModeSelection(state) })
+
+Mousetrap.bind('a',  function() {
+  if (state.modes[state.modeIndex] == 'urgncy') {
     stateMgmt.inc('urgncy', 1)
     animate.resetSweep()
   } else {
-    rangesMgmt.inc(state.mode, 'center', 1)
+    rangesMgmt.inc(state.modes[state.modeIndex], 'center', 1)
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
   }
 })
 
-Mousetrap.bind('down',  function() {
-  if (state.mode == 'urgncy') { stateMgmt.dec('urgncy', 1); animate.resetSweep() }
-  else {rangesMgmt.dec(state.mode, 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() }
+Mousetrap.bind('z',  function() {
+  if (state.modes[state.modeIndex] == 'urgncy') { stateMgmt.dec('urgncy', 1); animate.resetSweep() }
+  else {rangesMgmt.dec(state.modes[state.modeIndex], 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() }
 })
 
-Mousetrap.bind('right', function() {
-  if (state.mode != 'urgncy'){
-    rangesMgmt.inc(state.mode, 'amplitude', 1)
+Mousetrap.bind('s', function() {
+  if (state.modes[state.modeIndex] != 'urgncy'){
+    rangesMgmt.inc(state.modes[state.modeIndex], 'amplitude', 1)
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
   }
 })
 
-Mousetrap.bind('left',  function() {
-  if (state.mode != 'urgncy'){
-    rangesMgmt.dec(state.mode, 'amplitude', 1)
+Mousetrap.bind('x',  function() {
+  if (state.modes[state.modeIndex] != 'urgncy'){
+    rangesMgmt.dec(state.modes[state.modeIndex], 'amplitude', 1)
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
   }
 })
 
-Mousetrap.bind('shift+up', function() {
-  if (state.mode != 'urgncy') rangesMgmt.inc(state.mode, 'freq', 1)
+Mousetrap.bind('d', function() {
+  if (state.modes[state.modeIndex] != 'urgncy') rangesMgmt.inc(state.modes[state.modeIndex], 'freq', 1)
 })
 
-Mousetrap.bind('shift+down', function() {
-  if (state.mode != 'urgncy') rangesMgmt.dec(state.mode, 'freq', 1)
+Mousetrap.bind('c', function() {
+  if (state.modes[state.modeIndex] != 'urgncy') rangesMgmt.dec(state.modes[state.modeIndex], 'freq', 1)
 })
 
 Mousetrap.bind('o', function() { toggle('orbitt') });

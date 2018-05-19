@@ -1,6 +1,6 @@
 <!-- TODO
 
-- change controls to: up/down for mode select; a/z, s/x, d/c for state, swing, freq
+- refactor state.modes[state.modeIndex]
 - update state when loading presets
 - explain controls
 - toggle HUD
@@ -60,77 +60,58 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
     <div id="stateReader">
       <table>
         <tr id="head">
-          <td colspan=2></td>
-          <td colspan=2>state </td>
-          <td colspan=2>swing</td>
-          <td colspan=2>freq</td>
+          <td colspan>⬆⬇</td>
+          <td colspan>state [A/Z]</td>
+          <td colspan>swing [S/X]</td>
+          <td colspan>freq  [D/C]</td>
         </tr>
         <tr id="quirkkUI" class="selected">
-          <td>Q quirkk</td>
-          <td><span class="keys">⬆⬇</span></td>
+          <td>quirkk</td>
           <td><span id="quirkkState">0</span></td>
-          <td><span class="keys">⬅➡</span></td>
           <td><span id="quirkkAmplitude">0</span></td>
-          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="quirkkPeriod">0</span></td>
         </tr>
         <tr id="widthhUI">
-          <td>W widthh</td>
-          <td><span class="keys">⬆⬇</span></td>
+          <td>widthh</td>
           <td><span id="widthhState">0</span></td>
-          <td><span class="keys">⬅➡</span></td>
           <td><span id="widthhAmplitude">0</span></td>
-          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="widthhPeriod">0</span></td>
         </tr>
         <tr id="energyUI">
-          <td>E energy</td>
-          <td><span class="keys">⬆⬇</span></td>
+          <td>energy</td>
           <td><span id="energyState">0</span></td>
-          <td><span class="keys">⬅➡</span></td>
           <td><span id="energyAmplitude">0</span></td>
-          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="energyPeriod">0</span></td>
         </tr>
         <tr id="repeatUI">
-          <td>R repeat</td>
-          <td><span class="keys">⬆⬇</span></td>
+          <td>repeat</td>
           <td><span id="repeatState">0</span></td>
-          <td><span class="keys">⬅➡</span></td>
           <td><span id="repeatAmplitude">0</span></td>
-          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="repeatPeriod">0</span></td>
         </tr>
         <tr id="tensorUI">
-          <td>T tensor</td>
-          <td><span class="keys">⬆⬇</span></td>
+          <td>tensor</td>
           <td><span id="tensorState">0</span></td>
-          <td><span class="keys">⬅➡</span></td>
           <td><span id="tensorAmplitude">0</span></td>
-          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="tensorPeriod">0</span></td>
         </tr>
         <tr id="yessssUI">
-          <td>Y yessss</td>
-          <td><span class="keys">⬆⬇</span></td>
+          <td>yessss</td>
           <td><span id="yessssState">0</span></td>
-          <td><span class="keys">⬅➡</span></td>
           <td><span id="yessssAmplitude">0</span></td>
-          <td><span class="keys">shift ⬆⬇</span></td>
           <td><span id="yessssPeriod">0</span></td>
         </tr>
         <tr id="urgncyUI">
-          <td>U urgncy</td>
-          <td><span class="keys">⬆⬇</span></td>
-          <td colspan=5><span id="urgncyState">0</span></td>
+          <td>urgncy</td>
+          <td colspan=3><span id="urgncyState">0</span></td>
         </tr>
         <tr>
-          <td colspan=2>O orbitt</td>
-          <td colspan=5><span id="orbittState">0</span><span class="keys">⬆⬇</span></td>
+          <td colspan>orbitt [O]</td>
+          <td ><span id="orbittState">0</span></td>
         </tr>
         <tr id="pointsUI">
-          <td colspan=2>P points</td>
-          <td colspan=5><span id="pointsState">0</span><span class="keys">⬆⬇</span></td>
+          <td colspan>points [P]</td>
+          <td colspan=3><span id="pointsState">0</span></td>
         </tr>
       </table>
     </div>

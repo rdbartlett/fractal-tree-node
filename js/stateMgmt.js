@@ -7,7 +7,8 @@ function init(){
     quirkk: 0, widthh: 30, energy: 100, repeat: 1, tensor: 10, yessss: 8,
     color: '#D711B4', angle: -90, pointSize: 2, lineWidth: 1,
     points: false, orbitt: false, urgncy: 2,
-    mode: 'quirkk'
+    modes: ['quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss', 'urgncy'],
+    modeIndex: 0
   }
   ui.updateState(state)
   return state
@@ -28,6 +29,7 @@ function get(){
 function set(attr, to){
   state[attr] = to
   ui.updateState(state)
+  if(attr = 'modeIndex') ui.updateModeSelection(state)
 }
 
 function inc(attr, by){
