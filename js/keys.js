@@ -32,43 +32,43 @@ Mousetrap.bind('y', function() { stateMgmt.set('modeIndex', 5); ui.updateModeSel
 Mousetrap.bind('u', function() { stateMgmt.set('modeIndex', 6); ui.updateModeSelection(state) })
 
 Mousetrap.bind('a',  function() {
-  if (state.modes[state.modeIndex] == 'urgncy') {
+  if (stateMgmt.mode() == 'urgncy') {
     stateMgmt.inc('urgncy', 1)
     animate.resetSweep()
   } else {
-    rangesMgmt.inc(state.modes[state.modeIndex], 'center', 1)
+    rangesMgmt.inc(stateMgmt.mode(), 'center', 1)
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
   }
 })
 
 Mousetrap.bind('z',  function() {
-  if (state.modes[state.modeIndex] == 'urgncy') { stateMgmt.dec('urgncy', 1); animate.resetSweep() }
-  else {rangesMgmt.dec(state.modes[state.modeIndex], 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() }
+  if (stateMgmt.mode() == 'urgncy') { stateMgmt.dec('urgncy', 1); animate.resetSweep() }
+  else {rangesMgmt.dec(stateMgmt.mode(), 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() }
 })
 
 Mousetrap.bind('s', function() {
-  if (state.modes[state.modeIndex] != 'urgncy'){
-    rangesMgmt.inc(state.modes[state.modeIndex], 'amplitude', 1)
+  if (stateMgmt.mode() != 'urgncy'){
+    rangesMgmt.inc(stateMgmt.mode(), 'amplitude', 1)
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
   }
 })
 
 Mousetrap.bind('x',  function() {
-  if (state.modes[state.modeIndex] != 'urgncy'){
-    rangesMgmt.dec(state.modes[state.modeIndex], 'amplitude', 1)
+  if (stateMgmt.mode() != 'urgncy'){
+    rangesMgmt.dec(stateMgmt.mode(), 'amplitude', 1)
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
   }
 })
 
 Mousetrap.bind('d', function() {
-  if (state.modes[state.modeIndex] != 'urgncy') rangesMgmt.inc(state.modes[state.modeIndex], 'freq', 1)
+  if (stateMgmt.mode() != 'urgncy') rangesMgmt.inc(stateMgmt.mode(), 'freq', 1)
 })
 
 Mousetrap.bind('c', function() {
-  if (state.modes[state.modeIndex] != 'urgncy') rangesMgmt.dec(state.modes[state.modeIndex], 'freq', 1)
+  if (stateMgmt.mode() != 'urgncy') rangesMgmt.dec(stateMgmt.mode(), 'freq', 1)
 })
 
 Mousetrap.bind('o', function() { toggle('orbitt') });

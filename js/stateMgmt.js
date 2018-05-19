@@ -22,6 +22,10 @@ var bounds = {
   urgncy: {min: 1, max: 100}
 }
 
+function mode(){
+  return state.modes[state.modeIndex]
+}
+
 function get(){
   return state
 }
@@ -55,4 +59,4 @@ function dec(attr, by){
 }
 
 
-module.exports = { init, get, set, inc, dec}
+module.exports = { init, get, set, inc, dec, mode}
