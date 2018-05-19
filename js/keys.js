@@ -34,8 +34,8 @@ Mousetrap.bind('down',  function() { rangesMgmt.dec(state.mode, 'center', 1);  d
 Mousetrap.bind('right', function() { rangesMgmt.inc(state.mode, 'amplitude', 1); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
 Mousetrap.bind('left',  function() { rangesMgmt.dec(state.mode, 'amplitude', 1); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
 
-Mousetrap.bind('shift+up', function() { rangesMgmt.inc(state.mode, 'period', 1) })
-Mousetrap.bind('shift+down', function() { rangesMgmt.dec(state.mode, 'period', 1) })
+Mousetrap.bind('shift+up', function() { rangesMgmt.inc(state.mode, 'freq', 1) })
+Mousetrap.bind('shift+down', function() { rangesMgmt.dec(state.mode, 'freq', 1) })
 
 Mousetrap.bind('o', function() { toggle('orbitt') });
 Mousetrap.bind('p', function() { toggle('points') });

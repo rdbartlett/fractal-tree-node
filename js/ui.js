@@ -14,7 +14,7 @@ function updateState(state){
 function updateRange(attr, vals){
   document.getElementById(attr + 'Center').textContent = vals.center.toFixed(2);
   document.getElementById(attr + 'Amplitude').textContent = vals.amplitude.toFixed(2);
-  document.getElementById(attr + 'Period').textContent = vals.period.toFixed(2);
+  document.getElementById(attr + 'Period').textContent = vals.freq.toFixed(2);
 }
 
 function updateDelta(attr, val){

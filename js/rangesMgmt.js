@@ -6,12 +6,12 @@ const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss' ]
 
 function init(){
   ranges = {
-    quirkk: {center: 0 , amplitude: 0 , period: 90},
-    widthh: {center: 30 , amplitude: 10 , period: 90},
-    energy: {center: 100 , amplitude: 0 , period: 90},
-    repeat: {center: 1 , amplitude: 0, period: 10},
-    tensor: {center: 10 , amplitude: 0 , period: 90},
-    yessss: {center: 8 , amplitude: 0 , period: 10}
+    quirkk: {center: 0 , amplitude: 0 , freq: 1},
+    widthh: {center: 30 , amplitude: 10 , freq: 5},
+    energy: {center: 100 , amplitude: 0 , freq: 1},
+    repeat: {center: 1 , amplitude: 0, freq: 1},
+    tensor: {center: 10 , amplitude: 0 , freq: 1},
+    yessss: {center: 8 , amplitude: 0 , freq: 1}
   }
 
   attrs.forEach(function(attr){
@@ -26,10 +26,8 @@ var deltas = []
 
 
 function updateDeltas(attr){
-  if (ranges[attr].period > 0){
-    var d = ranges[attr].amplitude
-    var t = ranges[attr].period / 2
-    deltas[attr] = d/t
+  if (ranges[attr].freq > 0){
+    deltas[attr] = ranges[attr].amplitude * ranges[attr].freq / 100
   }
   else deltas[attr] = 0
   ui.updateDelta(attr, deltas[attr])
