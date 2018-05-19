@@ -9,7 +9,7 @@ function init(){
     quirkk: {center: 0 , amplitude: 0 , period: 90},
     widthh: {center: 30 , amplitude: 10 , period: 90},
     energy: {center: 100 , amplitude: 0 , period: 90},
-    repeat: {center: 1 , amplitude: 0 , period: 10},
+    repeat: {center: 1 , amplitude: 0, period: 10},
     tensor: {center: 10 , amplitude: 0 , period: 90},
     yessss: {center: 8 , amplitude: 0 , period: 10}
   }

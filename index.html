@@ -1,11 +1,13 @@
 <!-- TODO
 
-- handle the case where center + amplitude exceeds bounds
+- replace period with tempo
 - visualise ranges
 - explain controls
 - toggle HUD
+- DRY up bounds
 - add color picker
 - add different easing curves
+
 
 rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/ rdb@richdecibels.com:~/websites/richdecibels.com/fractal-tree/
  -->
@@ -14,8 +16,6 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
   <head>
     <style>
       canvas{
-        /*background: #9a9fa5;*/
-        background: #000;
         background: rgb(154, 159, 165);
         background: black;
         width: 100%;

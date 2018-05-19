@@ -37,18 +37,63 @@ function resetSweep(){
   sweep()
 }
 
+var bounds = {
+  energy: {min: 0, max: 100},
+  repeat: {min: 0, max: 300},
+  tensor: {min: 0, max: 999},
+  yessss: {min: 0, max: 16},
+  speedd: {min: 0, max: 100}
+}
+
+function growUnlessExceedingBounds(attr){
+  if(state[attr] + 1 <= bounds[attr].max) grow(attr)
+}
+
+function shrinkUnlessExceedingBounds(attr){
+  if(state[attr] - 1 >= bounds[attr].min) shrink(attr)
+}
+
+function grow(attr){
+  stateMgmt.inc(attr, deltas[attr])
+}
+
+function shrink(attr){
+  stateMgmt.dec(attr, deltas[attr])
+}
+
+function shouldGrow(attr){
+  if(bounds[attr]){
+    return (state[attr] < ranges[attr].center + ranges[attr].amplitude) &&
+           (state[attr] + 1 <= bounds[attr].max)
+  }
+  else return (state[attr] < ranges[attr].center + ranges[attr].amplitude)
+}
+
+function shouldShrink(attr){
+  if(bounds[attr]){
+    return (state[attr] > ranges[attr].center - ranges[attr].amplitude) &&
+           (state[attr] - 1 >= bounds[attr].min)
+  }
+  else return (state[attr] > ranges[attr].center - ranges[attr].amplitude)
+}
+
+
 function nextFrame(){
   state = stateMgmt.get()
   deltas = rangesMgmt.getDeltas()
 
   attrs.forEach(function(attr){
     if(growing[attr]){
-      if(state[attr].toFixed(1) < ranges[attr].center + ranges[attr].amplitude) stateMgmt.inc(attr, deltas[attr])
-      else growing[attr] = !growing[attr]
+      if(shouldGrow(attr)){
+        if(bounds[attr]) growUnlessExceedingBounds(attr)
+        else grow(attr)
+      } else growing[attr] = !growing[attr]
     }
     else{
-      if(state[attr].toFixed(1) > ranges[attr].center - ranges[attr].amplitude) stateMgmt.dec(attr, deltas[attr])
-      else growing[attr] = !growing[attr]
+      if(shouldShrink(attr)){
+        if(bounds[attr]) shrinkUnlessExceedingBounds(attr)
+        else shrink(attr)
+      } else growing[attr] = !growing[attr]
     }
   });
 
