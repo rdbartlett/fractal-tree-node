@@ -12,8 +12,8 @@ function updateState(state){
 }
 
 function updateRange(attr, vals){
-  document.getElementById(attr + 'Low').textContent = vals.low.toFixed(2);
-  document.getElementById(attr + 'High').textContent = vals.high.toFixed(2);
+  document.getElementById(attr + 'Center').textContent = vals.center.toFixed(2);
+  document.getElementById(attr + 'Amplitude').textContent = vals.amplitude.toFixed(2);
   document.getElementById(attr + 'Period').textContent = vals.period.toFixed(2);
 }
 

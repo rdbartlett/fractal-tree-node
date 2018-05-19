@@ -19,7 +19,7 @@ function fromState(){
   state = stateMgmt.get();
   context.fillStyle = state.color;
   context.strokeStyle = state.color;
-  context.globalAlpha = state.energy;
+  context.globalAlpha = state.energy / 100;
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.lineWidth = state.lineWidth;
   context.beginPath();
@@ -30,12 +30,12 @@ function fromState(){
 }
 
 function updateStateWithRanges(){
-  stateMgmt.set('quirkk', ranges.quirkk.low)
-  stateMgmt.set('widthh', ranges.widthh.low)
-  stateMgmt.set('energy', ranges.energy.low)
-  stateMgmt.set('repeat', ranges.repeat.low)
-  stateMgmt.set('tensor', ranges.tensor.low)
-  stateMgmt.set('yessss', ranges.yessss.low)
+  stateMgmt.set('quirkk', ranges.quirkk.center)
+  stateMgmt.set('widthh', ranges.widthh.center)
+  stateMgmt.set('energy', ranges.energy.center)
+  stateMgmt.set('repeat', ranges.repeat.center)
+  stateMgmt.set('tensor', ranges.tensor.center)
+  stateMgmt.set('yessss', ranges.yessss.center)
 }
 
 function drawReflectedTrees(x1, y1, angle, depth){

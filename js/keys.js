@@ -32,23 +32,10 @@ Mousetrap.bind('t', function() { stateMgmt.set('mode', 'tensor') })
 Mousetrap.bind('y', function() { stateMgmt.set('mode', 'yessss') })
 
 
-Mousetrap.bind('up', function()   { stateMgmt.inc(state.mode, 1); drawCanvas.fromState() })
-Mousetrap.bind('down', function() { stateMgmt.dec(state.mode, 1); drawCanvas.fromState() })
-
-
-// Mousetrap.bind('q', function() { rangesMgmt.inc(attrs[0], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-// Mousetrap.bind('w', function() { rangesMgmt.inc(attrs[1], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-// Mousetrap.bind('e', function() { rangesMgmt.inc(attrs[2], 'low', 0.05); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-// Mousetrap.bind('r', function() { rangesMgmt.inc(attrs[3], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-// Mousetrap.bind('t', function() { rangesMgmt.inc(attrs[4], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-// Mousetrap.bind('y', function() { rangesMgmt.inc(attrs[5], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-
-Mousetrap.bind('a', function() { rangesMgmt.dec(attrs[0], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-Mousetrap.bind('s', function() { rangesMgmt.dec(attrs[1], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-Mousetrap.bind('d', function() { rangesMgmt.dec(attrs[2], 'low', 0.05); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-Mousetrap.bind('f', function() { rangesMgmt.dec(attrs[3], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-Mousetrap.bind('g', function() { rangesMgmt.dec(attrs[4], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
-Mousetrap.bind('h', function() { rangesMgmt.dec(attrs[5], 'low', 1);    drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('up',    function() { rangesMgmt.inc(state.mode, 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('down',  function() { rangesMgmt.dec(state.mode, 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('right', function() { rangesMgmt.inc(state.mode, 'amplitude', 1); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
+Mousetrap.bind('left',  function() { rangesMgmt.dec(state.mode, 'amplitude', 1); drawCanvas.updateStateWithRanges(); drawCanvas.fromState() })
 
 Mousetrap.bind('o', function() { toggle('orbitt') });
 Mousetrap.bind('p', function() { toggle('points') });

@@ -43,11 +43,11 @@ function nextFrame(){
 
   attrs.forEach(function(attr){
     if(growing[attr]){
-      if(state[attr].toFixed(1) < ranges[attr].high) stateMgmt.inc(attr, deltas[attr])
+      if(state[attr].toFixed(1) < ranges[attr].center + ranges[attr].amplitude) stateMgmt.inc(attr, deltas[attr])
       else growing[attr] = !growing[attr]
     }
     else{
-      if(state[attr].toFixed(1) > ranges[attr].low) stateMgmt.dec(attr, deltas[attr])
+      if(state[attr].toFixed(1) > ranges[attr].center - ranges[attr].amplitude) stateMgmt.dec(attr, deltas[attr])
       else growing[attr] = !growing[attr]
     }
   });
