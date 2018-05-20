@@ -76,6 +76,7 @@ Mousetrap.bind('c', function() {
   if (stateMgmt.mode() != 'urgncy') rangesMgmt.dec(stateMgmt.mode(), 'freq', 1)
 })
 
+Mousetrap.bind('i', function() { toggleControls() });
 Mousetrap.bind('o', function() { toggle('orbitt') });
 Mousetrap.bind('p', function() { toggle('points') });
 
@@ -87,4 +88,17 @@ function toggle(attr){
   if(state[attr]) stateMgmt.set(attr, false)
   else stateMgmt.set(attr, true)
   drawCanvas.fromState()
+}
+
+showingControls = true
+
+function toggleControls(){
+  if(showingControls) {
+    showingControls = !showingControls
+    document.getElementById('stateReader').style.visibility = 'hidden'
+  }
+  else {
+    showingControls = !showingControls
+    document.getElementById('stateReader').style.visibility = 'visible'
+  }
 }
