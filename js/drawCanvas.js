@@ -17,8 +17,9 @@ function setRoot(){
 
 function fromState(){
   state = stateMgmt.get();
-  context.fillStyle = state.color;
-  context.strokeStyle = state.color;
+  var rgb = 'rgb(' + state.red + ', ' + state.green + ', ' + state.blue + ')'
+  context.fillStyle = rgb
+  context.strokeStyle = rgb
   context.globalAlpha = state.energy / 100;
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.lineWidth = state.lineWidth;

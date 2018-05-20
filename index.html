@@ -1,6 +1,6 @@
 <!-- TODO
 
-- add color picker
+- inc attrs without reseting animation loop
 - update state when loading presets
 - explain controls
 - DRY up bounds
@@ -25,7 +25,7 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
       }
       #stateReader{
         position: absolute;
-        top: 0;
+        bottom: 15px;
         font-family: monospace;
       }
       #stateReader table{
@@ -34,7 +34,7 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
       #stateReader tr{
         color: white;
       }
-      #head td, #pointsUI td{
+      #head td, #yessssUI td, #pointsUI td{
         border-bottom: 1px solid white;
       }
       #stateReader td{
@@ -96,6 +96,12 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
           <td><span id="yessssState">0</span></td>
           <td><span id="yessssAmplitude">0</span></td>
           <td><span id="yessssPeriod">0</span></td>
+        </tr>
+        <tr id="huuuueUI">
+          <td>huuuue <span class="keys">[H]</span></td>
+          <td><span id="huuuueRed">100</span>R</td>
+          <td><span id="huuuueGreen">100</span>G</td>
+          <td><span id="huuuueBlue">100</span>B</td>
         </tr>
         <tr id="urgncyUI">
           <td>urgncy <span class="keys">[U]</span></td>

@@ -21,7 +21,7 @@ Mousetrap.bind('9', function() { presets.load(8); drawCanvas.fromState() });
 Mousetrap.bind('0', function() { presets.load(9); drawCanvas.fromState() });
 
 Mousetrap.bind('up',  function() { if(state.modeIndex > 0) stateMgmt.set('modeIndex', state.modeIndex-1) })
-Mousetrap.bind('down',  function() { if(state.modeIndex < 6) stateMgmt.set('modeIndex', state.modeIndex+1) })
+Mousetrap.bind('down',  function() { if(state.modeIndex < 7) stateMgmt.set('modeIndex', state.modeIndex+1) })
 
 Mousetrap.bind('q', function() { stateMgmt.set('modeIndex', 0); ui.updateModeSelection(state) })
 Mousetrap.bind('w', function() { stateMgmt.set('modeIndex', 1); ui.updateModeSelection(state) })
@@ -30,11 +30,20 @@ Mousetrap.bind('r', function() { stateMgmt.set('modeIndex', 3); ui.updateModeSel
 Mousetrap.bind('t', function() { stateMgmt.set('modeIndex', 4); ui.updateModeSelection(state) })
 Mousetrap.bind('y', function() { stateMgmt.set('modeIndex', 5); ui.updateModeSelection(state) })
 Mousetrap.bind('u', function() { stateMgmt.set('modeIndex', 6); ui.updateModeSelection(state) })
+Mousetrap.bind('h', function() { stateMgmt.set('modeIndex', 7); ui.updateModeSelection(state) })
+
+Mousetrap.bind('a',  inc)
+Mousetrap.bind('z',  dec)
+Mousetrap.bind('right', inc)
+Mousetrap.bind('left',  dec)
 
 function inc(){
   if (stateMgmt.mode() == 'urgncy') {
     stateMgmt.inc('urgncy', 1)
     animate.resetSweep()
+  } else if (stateMgmt.mode() == 'huuuue'){
+    stateMgmt.inc('red', 5)
+    ui.updateRed(state)
   } else {
     rangesMgmt.inc(stateMgmt.mode(), 'center', 1)
     drawCanvas.updateStateWithRanges()
@@ -43,17 +52,25 @@ function inc(){
 }
 
 function dec(){
-  if (stateMgmt.mode() == 'urgncy') { stateMgmt.dec('urgncy', 1); animate.resetSweep() }
-  else {rangesMgmt.dec(stateMgmt.mode(), 'center', 1);  drawCanvas.updateStateWithRanges(); drawCanvas.fromState() }
+  if (stateMgmt.mode() == 'urgncy') {
+    stateMgmt.dec('urgncy', 1)
+    animate.resetSweep()
+  } else if (stateMgmt.mode() == 'huuuue'){
+    stateMgmt.dec('red', 5)
+    ui.updateRed(state)
+  } else {
+    rangesMgmt.dec(stateMgmt.mode(), 'center', 1)
+    drawCanvas.updateStateWithRanges()
+    drawCanvas.fromState()
+  }
 }
 
-Mousetrap.bind('a',  inc)
-Mousetrap.bind('z',  dec)
-Mousetrap.bind('right',  inc)
-Mousetrap.bind('left',  dec)
-
 Mousetrap.bind('s', function() {
-  if (stateMgmt.mode() != 'urgncy'){
+  if (stateMgmt.mode() == 'urgncy') return
+  else if (stateMgmt.mode() == 'huuuue') {
+    stateMgmt.inc('green', 5)
+    ui.updateGreen(state)
+  } else {
     rangesMgmt.inc(stateMgmt.mode(), 'amplitude', 1)
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
@@ -61,7 +78,11 @@ Mousetrap.bind('s', function() {
 })
 
 Mousetrap.bind('x',  function() {
-  if (stateMgmt.mode() != 'urgncy'){
+  if (stateMgmt.mode() == 'urgncy') return
+  else if (stateMgmt.mode() == 'huuuue') {
+    stateMgmt.dec('green', 5)
+    ui.updateGreen(state)
+  } else {
     rangesMgmt.dec(stateMgmt.mode(), 'amplitude', 1)
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
@@ -69,11 +90,17 @@ Mousetrap.bind('x',  function() {
 })
 
 Mousetrap.bind('d', function() {
-  if (stateMgmt.mode() != 'urgncy') rangesMgmt.inc(stateMgmt.mode(), 'freq', 1)
+  if (stateMgmt.mode() == 'huuuue') {
+    stateMgmt.inc('blue', 5)
+    ui.updateBlue(state)
+  } else if (stateMgmt.mode() != 'urgncy') rangesMgmt.inc(stateMgmt.mode(), 'freq', 1)
 })
 
 Mousetrap.bind('c', function() {
-  if (stateMgmt.mode() != 'urgncy') rangesMgmt.dec(stateMgmt.mode(), 'freq', 1)
+  if (stateMgmt.mode() == 'huuuue') {
+    stateMgmt.dec('blue', 5)
+    ui.updateBlue(state)
+  } else if (stateMgmt.mode() != 'urgncy') rangesMgmt.dec(stateMgmt.mode(), 'freq', 1)
 })
 
 Mousetrap.bind('i', function() { toggleControls() });

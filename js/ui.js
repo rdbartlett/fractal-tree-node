@@ -10,9 +10,20 @@ function updateState(state){
   document.getElementById('urgncyState').textContent = state.urgncy.toString();
 }
 
+
+function updateRed(state){
+  document.getElementById('huuuueRed').textContent = state.red;
+}
+function updateGreen(state){
+  document.getElementById('huuuueGreen').textContent = state.green;
+}
+function updateBlue(state){
+  document.getElementById('huuuueBlue').textContent = state.blue;
+}
+
+
 function updateModeSelection(state){
-  const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss', 'urgncy' ]
-  attrs.forEach(function(attr){ document.getElementById(attr + 'UI').className = "" })
+  state.modes.forEach(function(attr){ document.getElementById(attr + 'UI').className = "" })
   document.getElementById(state.modes[state.modeIndex] + 'UI').className = "selected"
 }
 
@@ -22,5 +33,5 @@ function updateRange(attr, vals){
 }
 
 module.exports = {
-  updateState, updateRange, updateModeSelection
+  updateState, updateRange, updateModeSelection, updateRed, updateGreen, updateBlue
 }

@@ -5,9 +5,10 @@ var state = {}
 function init(){
   state = {
     quirkk: 0, widthh: 30, energy: 100, repeat: 1, tensor: 10, yessss: 8,
-    color: '#D711B4', angle: -90, pointSize: 2, lineWidth: 1,
+    angle: -90, pointSize: 2, lineWidth: 1,
     points: false, orbitt: false, urgncy: 2,
-    modes: ['quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss', 'urgncy'],
+    red: 100, green: 100, blue: 100,
+    modes: ['quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss', 'huuuue', 'urgncy'],
     modeIndex: 0
   }
   ui.updateState(state)
@@ -19,7 +20,10 @@ var bounds = {
   repeat: {min: 0, max: 300},
   tensor: {min: 0, max: 999},
   yessss: {min: 0, max: 16},
-  urgncy: {min: 1, max: 100}
+  urgncy: {min: 1, max: 100},
+  red: {min: 0, max: 255},
+  green: {min: 0, max: 255},
+  blue: {min: 0, max: 255}
 }
 
 function mode(){
