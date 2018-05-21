@@ -29,8 +29,8 @@ Mousetrap.bind('e', function() { stateMgmt.set('modeIndex', 2); ui.updateModeSel
 Mousetrap.bind('r', function() { stateMgmt.set('modeIndex', 3); ui.updateModeSelection(state) })
 Mousetrap.bind('t', function() { stateMgmt.set('modeIndex', 4); ui.updateModeSelection(state) })
 Mousetrap.bind('y', function() { stateMgmt.set('modeIndex', 5); ui.updateModeSelection(state) })
-Mousetrap.bind('u', function() { stateMgmt.set('modeIndex', 6); ui.updateModeSelection(state) })
-Mousetrap.bind('h', function() { stateMgmt.set('modeIndex', 7); ui.updateModeSelection(state) })
+Mousetrap.bind('h', function() { stateMgmt.set('modeIndex', 6); ui.updateModeSelection(state) })
+Mousetrap.bind('u', function() { stateMgmt.set('modeIndex', 7); ui.updateModeSelection(state) })
 
 Mousetrap.bind('a',  inc)
 Mousetrap.bind('z',  dec)
