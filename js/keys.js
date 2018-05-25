@@ -32,8 +32,8 @@ Mousetrap.bind('y', function() { stateMgmt.set('modeIndex', 5); ui.updateModeSel
 Mousetrap.bind('h', function() { stateMgmt.set('modeIndex', 6); ui.updateModeSelection(state) })
 Mousetrap.bind('u', function() { stateMgmt.set('modeIndex', 7); ui.updateModeSelection(state) })
 
-Mousetrap.bind('l',  inc)
-Mousetrap.bind(',',  dec)
+Mousetrap.bind('J',  inc)
+Mousetrap.bind('N',  dec)
 
 function inc(){
   if (stateMgmt.mode() == 'urgncy') {
@@ -63,7 +63,7 @@ function dec(){
   }
 }
 
-Mousetrap.bind(';', function() {
+Mousetrap.bind('K', function() {
   if (stateMgmt.mode() == 'urgncy') return
   else if (stateMgmt.mode() == 'huuuue') {
     stateMgmt.inc('green', 5)
@@ -75,7 +75,7 @@ Mousetrap.bind(';', function() {
   }
 })
 
-Mousetrap.bind('.',  function() {
+Mousetrap.bind('M',  function() {
   if (stateMgmt.mode() == 'urgncy') return
   else if (stateMgmt.mode() == 'huuuue') {
     stateMgmt.dec('green', 5)
@@ -87,14 +87,14 @@ Mousetrap.bind('.',  function() {
   }
 })
 
-Mousetrap.bind("'", function() {
+Mousetrap.bind("L", function() {
   if (stateMgmt.mode() == 'huuuue') {
     stateMgmt.inc('blue', 5)
     ui.updateBlue(state)
   } else if (stateMgmt.mode() != 'urgncy') rangesMgmt.inc(stateMgmt.mode(), 'freq', 1)
 })
 
-Mousetrap.bind('/', function() {
+Mousetrap.bind(',', function() {
   if (stateMgmt.mode() == 'huuuue') {
     stateMgmt.dec('blue', 5)
     ui.updateBlue(state)
