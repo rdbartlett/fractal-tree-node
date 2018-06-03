@@ -29,7 +29,11 @@ var growing = {
 }
 
 function sweep(){
-  sweepTimer = setInterval(function(){ nextFrame() }, 100/state.urgncy)
+  sweepTimer = setInterval(function(){ nextFrame() }, 200/state.urgncy)
+}
+
+function pause(){
+  clearTimeout(sweepTimer)
 }
 
 function resetSweep(){
@@ -100,4 +104,4 @@ function playOrPause(){
   }
 }
 
-module.exports = {sweep, resetSweep, playOrPause, playing}
+module.exports = {sweep, resetSweep, playOrPause, playing, pause}

@@ -1,5 +1,8 @@
 var stateMgmt = require('./stateMgmt')
 var rangesMgmt = require('./rangesMgmt')
+var drawCanvas = require('./drawCanvas')
+var ui = require('./ui')
+
 
 var presets = [
     {repeat: 1,  yessss: 7,  widthh: 19,  tensor: 12, quirkk: 7,   energy: 100}
@@ -12,6 +15,18 @@ var presets = [
   , {repeat: 4,  yessss: 10, widthh: 45,  tensor: 8,  quirkk: 90,  energy: 40}
   , {repeat: 7,  yessss: 11, widthh: 90,  tensor: 13, quirkk: 0,   energy: 50}
   , {repeat: 9,  yessss: 9,  widthh: 30,  tensor: 10, quirkk: 0,   energy: 100}
+
+  , {repeat: 1,  yessss: 2,  widthh: 30,  tensor: 40, quirkk: 0,   energy: 100}
+  , {repeat: 1,  yessss: 3,  widthh: 30,  tensor: 27, quirkk: 0,   energy: 100}
+  , {repeat: 1,  yessss: 6,  widthh: 30,  tensor: 13, quirkk: 0,   energy: 100}
+  , {repeat: 1,  yessss: 6,  widthh: 60,  tensor: 13, quirkk: 0,   energy: 100}
+  , {repeat: 2,  yessss: 6,  widthh: 60,  tensor: 13, quirkk: 0,   energy: 100}
+  , {repeat: 2,  yessss: 6,  widthh: 60,  tensor: 13, quirkk: 30,   energy: 100}
+  , {repeat: 2,  yessss: 6,  widthh: 60,  tensor: 5, quirkk: 30,   energy: 100}
+  , {repeat: 2,  yessss: 6,  widthh: 60,  tensor: 5, quirkk: 30,   energy: 75}
+  , {repeat: 6,  yessss: 10,  widthh: 60,  tensor: 10, quirkk: -60,  energy: 75}
+
+
 ]
 
 function load(index){
@@ -28,6 +43,10 @@ function load(index){
   stateMgmt.set('repeat', newState.repeat)
   stateMgmt.set('tensor', newState.tensor)
   stateMgmt.set('yessss', newState.yessss)
+  drawCanvas.fromState()
+
+  state = stateMgmt.get()
+  if(state.tutorial) ui.updateTutorialSlideWithState(state)
 }
 
 module.exports = { presets, load }

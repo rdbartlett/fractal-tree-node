@@ -23,11 +23,12 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
       body{
         margin: 0;
         padding: 0;
+        font-family: monospace;
       }
       #stateReader{
         position: absolute;
         bottom: 15px;
-        font-family: monospace;
+        visibility: hidden;
       }
       #stateReader table{
         border-spacing: 0
@@ -46,14 +47,134 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
       }
       .keys{
         color: rgba(255, 255, 255, 0.7);
-        /*font-family: sans-serif;*/
         font-size: 12px;
+      }
+      #slides-container{
+        position: absolute;
+        top: 100px;
+        width: 100%;
+      }
+      #slides, #tutorialState{
+        margin: auto;
+        max-width: 400px;
+        color: white;
+        font-size: 16px;
+      }
+      #tutorialState{
+        display: none;
+      }
+      .slide{
+        padding: 0.2em 1em;
+        background: rgba(255,255,255,0.4);
+      }
+      .hotkey{
+        color: lightblue;
+        font-weight: bold;
+      }
+      .state, #tutorialState{
+        background: rgba(255,255,255,0.6);
+        color: black;
       }
     </style>
   </head>
   <body>
     <canvas id="canvas">
     </canvas>
+    <div id="slides-container">
+      <div id="slides">
+        <div class="slide" id="slide-1">
+          <p>01 Welcome.</p>
+          <p>I made this toy to share an idea that I couldn't explain another way.</p>
+          <p>You'll need a keyboard to play. Press the down key to come in, or press "<span class="hotkey">&rarr;</span>" to skip ahead to free play mode.</p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-2">
+          <p>02 Pause</p>
+          <p>This toy makes ethical graphs. It starts with a few values and elaborates them into a worldview.</p>
+          <p>Let me explain...</p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-3">
+          <p>03</p>
+          <p>I started with a line. <span class="state">{depth: 1}</span></p>
+          <p>Then I measured 30&deg; either side. <span class="state">{offset: 30}</span></p>
+          <p>I added two shorter lines branching off the first one. <span class="state">{depth: 2}</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-4">
+          <p>04</p>
+          <p>Repeating those instructions again adds new branches to each existing branch. <span class="state">{depth: 3}</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-5">
+          <p>05</p>
+          <p>Again,<br /> again,<br /> again!</p>
+          <p><span class="state">{depth: 6}</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-6">
+          <p>06</p>
+          <p>What if I start again with a 60&deg; spread instead of 30&deg;?</p>
+          <p><span class="state">{depth: 6, offset: 60}</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-7">
+          <p>07</p>
+          <p>Imagine this a diagram of your ethics. Instead of math-words like "depth" and "offset", supply your own ethics-words.</p>
+          <p>Maybe instead of <span class="state">{offset: 60}</span>, you rate yourself <span class="state">{conservative: 60}</span>.</p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-8">
+          <p>08</p>
+          <p>Let's say this diagram is a simplified fingerprint of your unique ethical identity.</p>
+          <p>The labels are not important: individual/ collective, or spiritual/ secular, pragmatic/ idealistic, whatever words you use to describe your core values.</p>
+          <p><span class="state">{depth: 6, offset: 60}</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-9">
+          <p>09</p>
+          <p>People are too complex to model with 2 attributes. Let's add a few more.</p>
+          <p><span class="state">{depth: 6, offset: 60, repeat: 2}</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-10">
+          <p>10</p>
+          <p><span class="state">{depth: 6, offset: 60, repeat: 2, twist: 30 }</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-11">
+          <p>11</p>
+          <p><span class="state">{depth: 6, offset: 60, repeat: 2, twist: 30, size: 5 }</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-12">
+          <p>12</p>
+          <p><span class="state">{depth: 6, offset: 60, repeat: 2, twist: 30, size: 5, opacity: 75% }</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-13">
+          <p>13</p>
+          <p>Now with 6 attributes, this machine generates a huge amount of diversity.</p>
+          <p>Press any of the number keys to test a few samples. Try <span class="hotkey">4</span>, or <span class="hotkey">2</span>, <span class="hotkey">6</span>...<p>
+          <p class="hotkey">&darr;</p>
+        </div>
+        <div class="slide" id="slide-14">
+          <p>14</p>
+          <p>Maybe you experience life through a filter that looks a bit like <span class="hotkey">3</span>, but your dad's brain is more <span class="hotkey">4</span>-shaped. You have different settings on a couple of core values, and the result is a completely different understanding of how the world works.</p>
+          <p>
+          <p class="hotkey">&darr;</p>
+        </div>
+      </div>
+      <div id="tutorialState">{
+          depth:&nbsp;<span id="tutorialYessssState">10</span>,
+         offset:&nbsp;<span id="tutorialWidthhState">60</span>,
+         repeat:&nbsp;<span id="tutorialRepeatState">6</span>,
+          twist:&nbsp;<span id="tutorialQuirkkState">-60</span>,
+           size:&nbsp;<span id="tutorialTensorState">10</span>,
+        opacity:&nbsp;<span id="tutorialEnergyState">0.75</span>
+      }</div>
+
+    </div>
     <div id="stateReader">
       <table>
         <tr id="head">

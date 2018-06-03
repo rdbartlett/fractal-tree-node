@@ -18,4 +18,7 @@ var presets = require('./js/presets')
 var keys = require('./js/keys')
 var animate = require('./js/animate')
 
-// animate.sweep();
+animate.sweep();
+
+var slides = require('./js/slides')
+slides.show(1)

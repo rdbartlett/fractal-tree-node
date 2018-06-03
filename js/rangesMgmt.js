@@ -7,7 +7,7 @@ const attrs = [ 'quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss' ]
 function init(){
   ranges = {
     quirkk: {center: 0 , amplitude: 0 , freq: 1},
-    widthh: {center: 30 , amplitude: 10 , freq: 5},
+    widthh: {center: 0 , amplitude: 180, freq: 1},
     energy: {center: 100 , amplitude: 0 , freq: 1},
     repeat: {center: 1 , amplitude: 0, freq: 1},
     tensor: {center: 10 , amplitude: 0 , freq: 1},

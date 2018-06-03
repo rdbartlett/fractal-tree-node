@@ -32,6 +32,15 @@ function updateRange(attr, vals){
   document.getElementById(attr + 'Period').textContent = vals.freq.toFixed(2);
 }
 
+function updateTutorialSlideWithState(state){
+  document.getElementById('tutorialQuirkkState').textContent = state.quirkk.toFixed(2);
+  document.getElementById('tutorialWidthhState').textContent = state.widthh.toFixed(2);
+  document.getElementById('tutorialEnergyState').textContent = state.energy.toFixed(2);
+  document.getElementById('tutorialRepeatState').textContent = state.repeat.toFixed(0);
+  document.getElementById('tutorialTensorState').textContent = state.tensor.toFixed(2);
+  document.getElementById('tutorialYessssState').textContent = state.yessss.toFixed(0);
+}
+
 module.exports = {
-  updateState, updateRange, updateModeSelection, updateRed, updateGreen, updateBlue
+  updateState, updateRange, updateModeSelection, updateRed, updateGreen, updateBlue, updateTutorialSlideWithState
 }
