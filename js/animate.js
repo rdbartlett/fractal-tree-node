@@ -32,10 +32,6 @@ function sweep(){
   sweepTimer = setInterval(function(){ nextFrame() }, 200/state.urgncy)
 }
 
-function pause(){
-  clearTimeout(sweepTimer)
-}
-
 function resetSweep(){
   clearTimeout(sweepTimer)
   sweep()
@@ -96,7 +92,7 @@ playing = false
 function playOrPause(){
   if(playing) {
     playing = !playing
-    sweep()
+    resetSweep()
   }
   else {
     playing = !playing
@@ -104,4 +100,14 @@ function playOrPause(){
   }
 }
 
-module.exports = {sweep, resetSweep, playOrPause, playing, pause}
+function pause(){
+  playing = false
+  clearTimeout(sweepTimer)
+}
+
+function play(){
+  playing = true
+  resetSweep()
+}
+
+module.exports = {sweep, resetSweep, playOrPause, playing, play, pause}

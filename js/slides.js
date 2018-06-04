@@ -16,6 +16,8 @@ function show(index){
   if(d = document.getElementById('slide-' + index))
     d.style.display = 'block'
 
+  // console.log("slide: " + index)
+
   switch(index){
     case 2:
       animate.pause()
@@ -48,6 +50,31 @@ function show(index){
     case 13:
       document.getElementById("tutorialState").style.display = "block"
       presets.load(18)
+      break
+    case 15:
+      document.getElementById("tutorialState").style.display = "block"
+
+      document.getElementById("slides-container").style.display = "block"
+      document.getElementById("stateReader").style.display = "none"
+      break
+    case 16:
+      document.getElementById("stateReader").style.display = "block"
+
+      d = document.getElementsByClassName("phase2")
+      for(var j = 0; j < d.length; j++) d[j].style.visibility = "hidden"
+
+      document.getElementById("tutorialState").style.display = "none"
+      break
+    case 17:
+      document.getElementById("slides-container").style.display = "none"
+      break
+    case 18:
+      document.getElementById("slides-container").style.display = "block"
+
+      d = document.getElementsByClassName("phase2")
+      for(var j = 0; j < d.length; j++) d[j].style.visibility = "visible"
+
+      animate.play()
       break
 
   }

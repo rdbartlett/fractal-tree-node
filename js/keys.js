@@ -33,10 +33,14 @@ Mousetrap.bind('y', function() { stateMgmt.set('modeIndex', 5); ui.updateModeSel
 Mousetrap.bind('h', function() { stateMgmt.set('modeIndex', 6); ui.updateModeSelection(state) })
 Mousetrap.bind('u', function() { stateMgmt.set('modeIndex', 7); ui.updateModeSelection(state) })
 
-Mousetrap.bind('l',  inc)
-Mousetrap.bind(',',  dec)
+Mousetrap.bind('j',  incState)
+Mousetrap.bind('n',  decState)
+Mousetrap.bind('k',  incSwing)
+Mousetrap.bind('m',  decSwing)
+Mousetrap.bind('l',  incFreq)
+Mousetrap.bind(',',  decFreq)
 
-function inc(){
+function incState(){
   if (stateMgmt.mode() == 'urgncy') {
     stateMgmt.inc('urgncy', 1)
     animate.resetSweep()
@@ -50,7 +54,7 @@ function inc(){
   }
 }
 
-function dec(){
+function decState(){
   if (stateMgmt.mode() == 'urgncy') {
     stateMgmt.dec('urgncy', 1)
     animate.resetSweep()
@@ -64,7 +68,7 @@ function dec(){
   }
 }
 
-Mousetrap.bind(';', function() {
+function incSwing(){
   if (stateMgmt.mode() == 'urgncy') return
   else if (stateMgmt.mode() == 'huuuue') {
     stateMgmt.inc('green', 5)
@@ -74,9 +78,9 @@ Mousetrap.bind(';', function() {
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
   }
-})
+}
 
-Mousetrap.bind('.',  function() {
+function decSwing(){
   if (stateMgmt.mode() == 'urgncy') return
   else if (stateMgmt.mode() == 'huuuue') {
     stateMgmt.dec('green', 5)
@@ -86,21 +90,21 @@ Mousetrap.bind('.',  function() {
     drawCanvas.updateStateWithRanges()
     drawCanvas.fromState()
   }
-})
+}
 
-Mousetrap.bind("'", function() {
+function incFreq(){
   if (stateMgmt.mode() == 'huuuue') {
     stateMgmt.inc('blue', 5)
     ui.updateBlue(state)
   } else if (stateMgmt.mode() != 'urgncy') rangesMgmt.inc(stateMgmt.mode(), 'freq', 1)
-})
+}
 
-Mousetrap.bind('/', function() {
+function decFreq(){
   if (stateMgmt.mode() == 'huuuue') {
     stateMgmt.dec('blue', 5)
     ui.updateBlue(state)
   } else if (stateMgmt.mode() != 'urgncy') rangesMgmt.dec(stateMgmt.mode(), 'freq', 1)
-})
+}
 
 Mousetrap.bind('i', function() { toggleControls() });
 Mousetrap.bind('o', function() { toggle('orbitt') });

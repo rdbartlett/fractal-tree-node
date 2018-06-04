@@ -28,7 +28,7 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
       #stateReader{
         position: absolute;
         bottom: 15px;
-        visibility: hidden;
+        display: none;
       }
       #stateReader table{
         border-spacing: 0
@@ -164,76 +164,109 @@ rsync -avz --exclude 'node_modules' --exclude '.*' ~/projects/fractal-tree-node/
           <p>
           <p class="hotkey">&darr;</p>
         </div>
+
+        <div class="slide" id="slide-15">
+          <p>15</p>
+          <p>It makes more sense when you play with it yourself. Press down <span class="hotkey">&darr;</span> to enter free play mode. Then down <span class="hotkey">&darr;</span> again to reach the next stage, or up <span class="hotkey">&uarr;</span> to return here.</p>
+          <p>
+          <p class="hotkey">&darr;</p>
+        </div>
+
+        <div class="slide" id="slide-16">
+          <p>16</p>
+          <p>Select an attribute with <span class="hotkey">Q</span> <span class="hotkey">W</span> <span class="hotkey">E</span> <span class="hotkey">R</span> <span class="hotkey">T</span> <span class="hotkey">Y</span>, or use <span class="hotkey">A</span>/<span class="hotkey">Z</span> to cycle through them.</p>
+          <p>Modify the value with <span class="hotkey">J</span>/<span class="hotkey">N</span></p>
+          <p class="hotkey">&darr;</p>
+        </div>
+
+        <div class="slide" id="slide-17">
+        </div>
+
+        <div class="slide" id="slide-18">
+          <p>18</p>
+          <p>Let's add some animation. Use <span class="hotkey">K</span>/<span class="hotkey">M</span> to alter the amplitude and <span class="hotkey">L</span>/<span class="hotkey">,</span> to modify frequency.</p>
+          <p>Change the overall speed with <span class="hotkey">U</span>.</p>
+          <p class="hotkey">&darr;</p>
+        </div>
+
+        <div class="slide" id="slide-19">
+        </div>
+
+        <div class="slide" id="slide-20">
+          <p>20</p>
+          <p>This project is free software, <a href="https://github.com/rdbartlett/fractal-tree-node">open for contributions</a>.</p>
+          <p>Discussion on <a href="https://viewer.scuttlebot.io/%25Za9m7WgN8muRCENsxX%2BuV%2BXPc0rxqnmjmPPDg3myorU%3D.sha256">#fractal-tree</a> on Scuttlebutt.</p>
+        </div>
+
+
       </div>
-      <div id="tutorialState">{
-          depth:&nbsp;<span id="tutorialYessssState">10</span>,
+      <div id="tutorialState">{&nbsp;depth:&nbsp;<span id="tutorialYessssState">10</span>,
          offset:&nbsp;<span id="tutorialWidthhState">60</span>,
          repeat:&nbsp;<span id="tutorialRepeatState">6</span>,
           twist:&nbsp;<span id="tutorialQuirkkState">-60</span>,
            size:&nbsp;<span id="tutorialTensorState">10</span>,
-        opacity:&nbsp;<span id="tutorialEnergyState">0.75</span>
-      }</div>
+        opacity:&nbsp;<span id="tutorialEnergyState">0.75</span>&nbsp;}</div>
 
     </div>
     <div id="stateReader">
       <table>
         <tr id="head">
           <td>______ <span class="keys">[A Z]</span></td>
-          <td>state <span class="keys">[L ,]</span></td>
-          <td>swing <span class="keys">[; .]</span></td>
-          <td>freq  <span class="keys">[' /]</span></td>
+          <td>state <span class="keys">[J N]</span></td>
+          <td class="phase2">swing <span class="keys">[K M]</span></td>
+          <td class="phase2">freq  <span class="keys">[L ,]</span></td>
         </tr>
         <tr id="quirkkUI" class="selected">
           <td>quirkk <span class="keys">[Q]</span></td>
           <td><span id="quirkkState">0</span></td>
-          <td><span id="quirkkAmplitude">0</span></td>
-          <td><span id="quirkkPeriod">0</span></td>
+          <td class="phase2"><span id="quirkkAmplitude">0</span></td>
+          <td class="phase2"><span id="quirkkPeriod">0</span></td>
         </tr>
         <tr id="widthhUI">
           <td>widthh <span class="keys">[W]</span></td>
           <td><span id="widthhState">0</span></td>
-          <td><span id="widthhAmplitude">0</span></td>
-          <td><span id="widthhPeriod">0</span></td>
+          <td class="phase2"><span id="widthhAmplitude">0</span></td>
+          <td class="phase2"><span id="widthhPeriod">0</span></td>
         </tr>
         <tr id="energyUI">
           <td>energy <span class="keys">[E]</span></td>
           <td><span id="energyState">0</span></td>
-          <td><span id="energyAmplitude">0</span></td>
-          <td><span id="energyPeriod">0</span></td>
+          <td class="phase2"><span id="energyAmplitude">0</span></td>
+          <td class="phase2"><span id="energyPeriod">0</span></td>
         </tr>
         <tr id="repeatUI">
           <td>repeat <span class="keys">[R]</span></td>
           <td><span id="repeatState">0</span></td>
-          <td><span id="repeatAmplitude">0</span></td>
-          <td><span id="repeatPeriod">0</span></td>
+          <td class="phase2"><span id="repeatAmplitude">0</span></td>
+          <td class="phase2"><span id="repeatPeriod">0</span></td>
         </tr>
         <tr id="tensorUI">
           <td>tensor <span class="keys">[T]</span></td>
           <td><span id="tensorState">0</span></td>
-          <td><span id="tensorAmplitude">0</span></td>
-          <td><span id="tensorPeriod">0</span></td>
+          <td class="phase2"><span id="tensorAmplitude">0</span></td>
+          <td class="phase2"><span id="tensorPeriod">0</span></td>
         </tr>
         <tr id="yessssUI">
           <td>yessss <span class="keys">[Y]</span></td>
           <td><span id="yessssState">0</span></td>
-          <td><span id="yessssAmplitude">0</span></td>
-          <td><span id="yessssPeriod">0</span></td>
+          <td class="phase2"><span id="yessssAmplitude">0</span></td>
+          <td class="phase2"><span id="yessssPeriod">0</span></td>
         </tr>
         <tr id="huuuueUI">
-          <td>huuuue <span class="keys">[H]</span></td>
-          <td><span id="huuuueRed">255</span>R</td>
-          <td><span id="huuuueGreen">0</span>G</td>
-          <td><span id="huuuueBlue">150</span>B</td>
+          <td class="phase2">huuuue <span class="keys">[H]</span></td>
+          <td class="phase2"><span id="huuuueRed">255</span>R</td>
+          <td class="phase2"><span id="huuuueGreen">0</span>G</td>
+          <td class="phase2"><span id="huuuueBlue">150</span>B</td>
         </tr>
         <tr id="urgncyUI">
-          <td>urgncy <span class="keys">[U]</span></td>
-          <td colspan=3><span id="urgncyState">0</span></td>
+          <td class="phase2">urgncy <span class="keys">[U]</span></td>
+          <td class="phase2" colspan=3><span id="urgncyState">0</span></td>
         </tr>
-        <tr>
+        <tr class="phase2">
           <td colspan>orbitt <span class="keys">[O]</span></td>
           <td ><span id="orbittState">0</span></td>
         </tr>
-        <tr id="pointsUI">
+        <tr class="phase2" id="pointsUI">
           <td colspan>points <span class="keys">[P]</span></td>
           <td colspan=3><span id="pointsState">0</span></td>
         </tr>
