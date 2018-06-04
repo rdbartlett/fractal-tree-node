@@ -16,7 +16,7 @@ function show(index){
   if(d = document.getElementById('slide-' + index))
     d.style.display = 'block'
 
-  // console.log("slide: " + index)
+  console.log("slide: " + index)
 
   switch(index){
     case 2:
@@ -76,7 +76,9 @@ function show(index){
 
       animate.play()
       break
-
+    case 19:
+      document.getElementById("slides-container").style.display = "none"
+      break
   }
 
 }
@@ -91,4 +93,8 @@ function prev(){
   show(i)
 }
 
-module.exports = {show, next, prev}
+function last(){
+  show(19)
+}
+
+module.exports = {show, next, prev, last}

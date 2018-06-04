@@ -90,7 +90,7 @@ function nextFrame(){
 playing = false
 
 function playOrPause(){
-  if(playing) {
+  if(!playing) {
     playing = !playing
     resetSweep()
   }

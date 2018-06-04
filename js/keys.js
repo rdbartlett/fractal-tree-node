@@ -110,11 +110,13 @@ Mousetrap.bind('i', function() { toggleControls() });
 Mousetrap.bind('o', function() { toggle('orbitt') });
 Mousetrap.bind('p', function() { toggle('points') });
 
+
 Mousetrap.bind('space', animate.playOrPause);
 
 // add bounds
 Mousetrap.bind('down', slides.next);
 Mousetrap.bind('up', slides.prev);
+Mousetrap.bind('right', slides.last);
 
 
 function toggle(attr){
@@ -129,10 +131,10 @@ showingControls = true
 function toggleControls(){
   if(showingControls) {
     showingControls = !showingControls
-    document.getElementById('stateReader').style.visibility = 'hidden'
+    document.getElementById('stateReader').style.display = 'none'
   }
   else {
     showingControls = !showingControls
-    document.getElementById('stateReader').style.visibility = 'visible'
+    document.getElementById('stateReader').style.display = 'block'
   }
 }
