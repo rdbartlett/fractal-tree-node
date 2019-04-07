@@ -22,3 +22,6 @@ animate.sweep();
 
 var slides = require('./js/slides')
 slides.show(1)
+
+var params = require('./js/params')
+params.drawCanvasFromURL()

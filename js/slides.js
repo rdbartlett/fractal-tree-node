@@ -77,6 +77,7 @@ function show(index){
       animate.play()
       break
     case 19:
+      document.getElementById("stateReader").style.display = "block"
       document.getElementById("slides-container").style.display = "none"
       break
   }
@@ -84,12 +85,12 @@ function show(index){
 }
 
 function next(){
-  i++
+  if(i<19) i++
   show(i)
 }
 
 function prev(){
-  i--
+  if(i>0) i--
   show(i)
 }
 

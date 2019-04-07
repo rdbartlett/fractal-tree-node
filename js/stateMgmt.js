@@ -10,7 +10,7 @@ function init(){
     red: 255, green: 0, blue: 150,
     modes: ['quirkk', 'widthh', 'energy', 'repeat', 'tensor', 'yessss', 'huuuue', 'urgncy'],
     modeIndex: 0,
-    tutorial: true
+    tutorial: false
   }
   ui.updateState(state)
   return state
